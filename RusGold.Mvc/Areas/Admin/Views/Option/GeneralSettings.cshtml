@@ -1,0 +1,112 @@
+﻿@model RusGold.Entities.Concrete.WebsiteInfo
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Genel Ayarlar";
+
+}
+<div class="row">
+    <div class="col-md-12  header-wrapper">
+        <h1 class="page-header">Admin - SEO əməliyyatı</h1>
+        <p class="page-subtitle">Burada saytın SEO əməliyyatıları apara bilərsiniz.</p>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<ol class="breadcrumb">
+    <li><a href="/Admin">Admin</a></li>
+    <li class="active">SEO əməliyyatı</li>
+</ol>
+
+<div class="row card-shadow">
+    <div class="col-lg-12 offset-lg-2">
+        <div class="card mt-1 mb-1">
+            <div class="card-header">
+                <h4 class="text-center"><span class="fas fa-edit"></span>Ümumi əməliyyatlar</h4>
+            </div>
+            <div class="card-body">
+                <form asp-controller="Option" asp-action="GeneralSettings" method="post" id="form-generalsettings-update">
+                    <div asp-validation-summary="All" class="text-danger" id="validation-summary"></div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="Title"></label>
+                            <input class="form-control" asp-for="Title" placeholder="Doldurun" />
+                            <span class="text-danger" asp-validation-for="Title"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Phone"></label>
+                            <input class="form-control" asp-for="Phone" placeholder="Doldurun" />
+                            <span class="text-danger" asp-validation-for="Phone"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Phone2"></label>
+                            <input class="form-control" asp-for="Phone2" placeholder="Doldurun" />
+                            <span class="text-danger" asp-validation-for="Phone2"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Email"></label>
+                            <input class="form-control" asp-for="Email" placeholder="Doldurun" />
+                            <span class="text-danger" asp-validation-for="Email"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Location"></label>
+                            <input class="form-control" asp-for="Location" placeholder="Doldurun" />
+                            <span class="text-danger" asp-validation-for="Location"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="MenuTitle"></label>
+                            <input class="form-control" asp-for="MenuTitle" placeholder="Doldurun" />
+                            <span class="text-danger" asp-validation-for="MenuTitle"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="SeoAuthor"></label>
+                            <input type="text" class="form-control" asp-for="SeoAuthor" placeholder="Doldurun" />
+                            <span class="text-danger" asp-validation-for="SeoAuthor"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="SeoTags"></label>
+                            <input type="text" class="form-control" asp-for="SeoTags" placeholder="Doldurun." />
+                            <span class="text-danger" asp-validation-for="SeoTags"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Instagram">Maple</label>
+                            <input type="text" class="form-control" asp-for="Instagram" placeholder="Doldurun." />
+                            <span class="text-danger" asp-validation-for="Instagram"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Instagram2">Opel</label>
+                            <input type="text" class="form-control" asp-for="Instagram2" placeholder="Doldurun." />
+                            <span class="text-danger" asp-validation-for="Instagram2"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Whatsapp"></label>
+                            <input type="text" class="form-control" asp-for="Whatsapp" placeholder="Doldurun." />
+                            <span class="text-danger" asp-validation-for="Whatsapp"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Youtube">Hongqi</label>
+                            <input type="text" class="form-control" asp-for="Youtube" placeholder="Doldurun." />
+                            <span class="text-danger" asp-validation-for="Youtube"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Facebook">Bestune</label>
+                            <input type="text" class="form-control" asp-for="Facebook" placeholder="Doldurun." />
+                            <span class="text-danger" asp-validation-for="Facebook"></span>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label asp-for="SeoDescription"></label>
+                            <input type="text" class="form-control" asp-for="SeoDescription" placeholder="Doldurun seo açiqlama." />
+                            <span class="text-danger" asp-validation-for="SeoDescription"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <button type="submit" class="btn btn-primary"><span class="fas fa-save"></span> Yadda saxla</button>
+                            <a class="btn btn-danger" asp-area="Admin" asp-controller="Home" asp-action="Index"><span class="fas fa-times"></span>Ləğv et</a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

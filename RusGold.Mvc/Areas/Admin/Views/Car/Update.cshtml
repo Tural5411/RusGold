@@ -1,0 +1,195 @@
+﻿@model RusGold.Mvc.Areas.Admin.Models.CarUpdateViewModel
+<div class="container">
+    <form asp-action="Update" asp-controller="Car" method="post" enctype="multipart/form-data" id="form-team-add" class="container mt-5">
+        <input type="hidden" name="IsValid" value="@ViewData.ModelState.IsValid.ToString()" />
+        <div asp-validation-summary="All" class="alert alert-danger" id="validation-summary" aria-hidden="true" style="display: none;"></div>
+        <input type="hidden" class="form-control" asp-for="UserId" value="1" />
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="BrendId" />
+        <input type="hidden" asp-for="ModelId" />
+
+        <div class="row">
+            <!-- Left Column -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input class="form-control" asp-for="Name" />
+                    <span class="text-danger" asp-validation-for="Name"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input class="form-control" asp-for="Price" />
+                    <span class="text-danger" asp-validation-for="Price"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HorsePower" class="control-label"></label>
+                    <input class="form-control" asp-for="HorsePower" />
+                    <span class="text-danger" asp-validation-for="HorsePower"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EngineSize" class="control-label"></label>
+                    <input class="form-control" asp-for="EngineSize" />
+                    <span class="text-danger" asp-validation-for="EngineSize"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Body" class="control-label"></label>
+                    <select class="form-control" asp-for="Body">
+                        <option value="">Seçin</option>
+                        <option value="Offroader / SUV, 3 qapı">Offroader / SUV, 3 qapı</option>
+                        <option value="Offroader / SUV, 5 qapı">Offroader / SUV, 5 qapı</option>
+                        <option value="Offroader / SUV, açıq">Offroader / SUV, açıq</option>
+                        <option value="Hetçbek, 3 qap">Hetçbek, 3 qapı</option>
+                        <option value="Hetçbek, 4 qapı">Hetçbek, 4 qapı</option>
+                        <option value="Hetçbek, 5 qapı">Hetçbek, 5 qapı</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="Kupe">Kupe</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="Body"></span>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Content" class="control-label"></label>
+                    <textarea class="form-control" asp-for="Content"></textarea>
+                    <span class="text-danger" asp-validation-for="Content"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TechnicalParameters" class="control-label"></label>
+                    <textarea class="form-control" asp-for="TechnicalParameters"></textarea>
+                    <span class="text-danger" asp-validation-for="TechnicalParameters"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SeoDescription" class="control-label"></label>
+                    <input class="form-control" asp-for="SeoDescription" />
+                    <span class="text-danger" asp-validation-for="SeoDescription"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SeoTags" class="control-label"></label>
+                    <input class="form-control" asp-for="SeoTags" />
+                    <span class="text-danger" asp-validation-for="SeoTags"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="PictureFile" class="control-label">Dəyişdir</label>
+                    <input type="file" class="form-control-file" asp-for="PictureFile" />
+                    <span class="text-danger" asp-validation-for="PictureFile"></span>
+                    <label for="thumbnail" asp-for="Thumbnail">Qapaq şəkli</label>
+                    <input type="hidden" id="thumbnail" asp-for="Thumbnail" />
+                    <img width="200" src="~/img/@Model.Thumbnail" class="my-image img-fluid" alt="@Model.Thumbnail" />
+                    <span class="text-danger" asp-validation-for="Thumbnail"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="FuelType" class="control-label"></label>
+                    <select class="form-control" asp-for="FuelType">
+                        <option value="">Seçin</option>
+                        <option value="Benzin">Benzin</option>
+                        <option value="Dizel">Dizel</option>
+                        <option value="Elektrik">Elektrik</option>
+                        <option value="Hibrid">Hibrid</option>
+                        <option value="Pluq in hibrid">Pluq in hibrid</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="FuelType"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Year" class="control-label"></label>
+                    <input class="form-control" asp-for="Year" />
+                    <span class="text-danger" asp-validation-for="Year"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Transmission" class="control-label"></label>
+                    <select class="form-control" asp-for="Transmission">
+                        <option value="">Seçin</option>
+                        <option value="Mexaniki">Mexaniki</option>
+                        <option value="Avtomat">Avtomat</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="Transmission"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="DriveType" class="control-label"></label>
+                    <select class="form-control" asp-for="DriveType">
+                        <option value="">Seçin</option>
+                        <option value="Ön">Ön</option>
+                        <option value="Arxa">Arxa</option>
+                        <option value="4x4">4x4</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="DriveType"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Color" class="control-label"></label>
+                    <select class="form-control" asp-for="Color">
+                        <option value="">Seçin</option>
+                        <option value="Qara">Qara</option>
+                        <option value="Ağ">Ağ</option>
+                        <option value="Qırmızı">Qırmızı</option>
+                        <option value="Göy">Göy</option>
+                        <option value="Yaşıl">Yaşıl</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="Color"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="thumbnailUpload" asp-for="CarPhotos">Yeni şəkil əlavə et galeriyaya</label>
+                    <input type="file" accept="image/*" multiple id="thumbnailUpload" class="form-control-file" asp-for="CarPhotos" placeholder="Zəhmət Olmasa Şəkil seçin" />
+                    <span class="text-danger" asp-validation-for="CarPhotos"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" asp-for="IsActive" />
+            <label asp-for="IsActive" class="form-check-label"></label>
+            <span class="text-danger" asp-validation-for="IsActive"></span>
+        </div>
+
+        <div class="form-group text-center">
+            <a href="/Admin/Car" class="btn btn-danger">
+                <span class="fas fa-times"></span> Ləğv et
+            </a>
+            <button type="submit" class="btn btn-primary">
+                <span class="fas fa-save"></span> Yadda saxla
+            </button>
+        </div>
+    </form>
+
+
+
+    <div class="col-lg-12 text-center" style="padding-bottom:100px;">
+        <h3>Modelin şəkilləri</h3>
+        <hr />
+        <div class="row">
+            @if (Model.Images!=null)
+            {
+                foreach (var item in Model.Images)
+                {
+                    <div style="margin-top:10px;" name="@item.Id" class="col-lg-4">
+                        <img width="400" height="250" src="~/img/@item.ImageUrl" alt="@item.ImageUrl" />
+                        <button class="btn btn-danger btn-sm btn-delete-photo" data-id="@item.Id"><span class="fas fa-minus-circle"></span> </button>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/js/crud/car/carIndex.js" type="application/ecmascript"></script>
+}

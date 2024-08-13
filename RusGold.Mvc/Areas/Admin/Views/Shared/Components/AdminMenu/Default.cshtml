@@ -1,0 +1,83 @@
+﻿@model RusGold.Mvc.Areas.Admin.Models.UserWithRolesViewModel
+<div class="navbar-default sidebar">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <a class="navbar-brand" asp-area="Admin" asp-controller="Home" asp-action="Index">Cahan Motors</a>
+    </div>
+    <div class="clearfix"></div>
+    <div class="sidebar-nav navbar-collapse">
+
+        <!-- user profile pic -->
+        <div class="userprofile text-center">
+            <div class="userpic"> <img style="width: 95% !important;" src="~/img/cahancolorlogo.png" alt="" class="userpicimg"> </div>
+            <h3 class="username">@User.Identity?.Name</h3>
+            <p></p>
+        </div>
+        <div class="clearfix"></div>
+        <!-- user profile pic -->
+
+        <ul class="nav" id="side-menu">
+            <li> <a asp-area="Admin" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> Ana Səhifə</a> </li>
+            <li>
+                <a asp-area="Admin" asp-controller="Slider" asp-action="Index"><i class="fas fa-newspaper"></i> Slayder<span class="badge"></span></a>
+            </li>
+            <li>
+                <a asp-area="Admin" asp-controller="Credits" asp-action="Index"><i class="fas fa-newspaper"></i> Kreditlər<span class="badge"></span></a>
+            </li>
+            <li>
+                <a asp-area="Admin" asp-controller="CarBrendModel" asp-action="Index"><i class="fas fa-newspaper"></i> Model-Brend<span class="badge"></span></a>
+            </li>
+            <li>
+                <a asp-area="Admin" asp-controller="Register" asp-action="Index"><i class="fas fa-newspaper"></i> Test sürüşü<span class="badge"></span></a>
+            </li>
+            <li>
+                <a asp-area="Admin" asp-controller="Option" asp-action="Choose"><i class="fas fa-at"></i> Niye biz<span class="badge"></span></a>
+            </li>
+            <li>
+                <a asp-area="Admin" asp-controller="Article" asp-action="Index"><i class="fas fa-newspaper"></i> Bloq<span class="badge"></span></a>
+            </li>
+
+            <li>
+                <a asp-area="Admin" asp-controller="Car" asp-action="Index"><i class="fas fa-newspaper"></i> Maşınlar<span class="badge"></span></a>
+            </li>
+            <li>
+                <a asp-area="Admin" asp-controller="Option" asp-action="About"><i class="fas fa-tools"></i> Haqqımızda<span class="badge"></span></a>
+            </li>
+            @*<li>
+            <a asp-area="Admin" asp-controller="Option" asp-action="Choose"><i class="fas fa-address-card"></i> Niyə Biz<span class="badge"></span></a>
+        </li>*@
+            @*<li>
+            <a asp-area="Admin" asp-controller="Option" asp-action="PriceSmm"><i class="fas fa-th-list"></i> Endirimlər<span class="badge"></span></a>
+        </li>*@
+
+
+            @if (Model.Roles.Any(r => r.Equals("SuperAdmin") || r.Equals("Role.Read")))
+            {
+                <li>
+                    <a asp-area="Admin" asp-controller="Role" asp-action="Index"><i class="fas fa-user-tag"></i> Rollar</a>
+                </li>
+            }
+            @if (Model.Roles.Any(r => r.Equals("SuperAdmin") || r.Equals("User.Read")))
+            {
+                <li>
+                    <a asp-area="Admin" asp-controller="User" asp-action="Index" class="menudropdown"><i class="fas fa-user-friends"></i> İstifadəçilər <span class="badge green"></span></a>
+                    <!-- /.nav-second-level -->
+                </li>
+            }
+
+            <li>
+                <a href="#" class="menudropdown"><i class="fas fa-archive"></i>SEO Əməliyyatlar <span class="badge green"></span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" style="display: none;">
+
+                    <li>
+                        <a asp-area="Admin" asp-controller="Option" asp-action="EmailSettings"><i class="fas fa-at"></i> Email<span class="badge"></span></a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="Option" asp-action="GeneralSettings"><i class="fas fa-address-card"></i>SAYT-SEO<span class="badge"></span></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+</div>
