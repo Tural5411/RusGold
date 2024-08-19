@@ -56,7 +56,6 @@
                     {
                         <tr class="odd" name="@team.Id">
                             <td>@team.Id</td>
-                            <td>@(Model.CarBrendModels.FirstOrDefault(x => x.Id == team.ModelId)?.Name == null ? "Model seçilməyib" : Model.CarBrendModels.FirstOrDefault(x => x.Id == team.ModelId).Name)</td>
                             <td>@team.Period</td>
                             <td>@team.MonthlyPay</td>
                             <td>@team.InitialPayment</td>
@@ -64,7 +63,7 @@
                             <td class="center"><span class="status active">@(team.IsDeleted ? "Bəli" : "Xeyr")</span></td>
                             <td class="center">@team.CreatedDate.ToShortDateString()</td>
                             <td class="text-center">
-                                <a asp-area="Admin" data-id="@team.Id" class="btn btn-primary btn-sm btn-block" asp-action="Update" asp-controller="Credits" asp-route-creditId="@team.Id">
+                                <a asp-area="Admin" data-id="@team.Id" class="btn btn-primary btn-sm btn-block" asp-action="Update" asp-controller="Category" asp-route-creditId="@team.Id">
                                     <span class="fas fa-edit"></span>
                                 </a>
                                 <button class="btn btn-danger btn-sm btn-delete btn-block" data-id="@team.Id"><span class="fas fa-minus-circle"></span> </button>

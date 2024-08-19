@@ -1,4 +1,4 @@
-﻿@model RusGold.Entities.DTOs.CarBrendModelListDto
+﻿@model RusGold.Entities.DTOs.CategoryListDto
 @using RusGold.Shared.Utilities.Results.ComplexTypes
 @{
     Layout = "_Layout";
@@ -48,17 +48,16 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    @foreach (var team in Model.CarBrendModels)
+                    @foreach (var team in Model.Categories)
                     {
                         <tr class="odd" name="@team.Id">
                             <td>@team.Id</td>
-                            <td style="font-weight:900">@(Model.CarBrendModels.FirstOrDefault(x => x.Id == team.ParentId)?.Name == null ? team.Name : Model.CarBrendModels.FirstOrDefault(x => x.Id == team.ParentId).Name)</td>
                             <td>@(team.ParentId == 0 ? " " : team.Name )</td>
                             <td class="center"><span class="status active">@(team.IsActive ? "Bəli" : "Xeyr")</span></td>
                             <td class="center"><span class="status active">@(team.IsDeleted ? "Bəli" : "Xeyr")</span></td>
                             <td class="center">@team.CreatedDate.ToShortDateString()</td>
                             <td class="text-center">
-                                <a asp-area="Admin" data-id="@team.Id" class="btn btn-primary btn-sm btn-block" asp-action="Update" asp-controller="CarBrendModel" asp-route-carBrendModelId="@team.Id">
+                                <a asp-area="Admin" data-id="@team.Id" class="btn btn-primary btn-sm btn-block" asp-action="Update" asp-controller="Category" asp-route-carBrendModelId="@team.Id">
                                     <span class="fas fa-edit"></span>
                                 </a>
                                 <button class="btn btn-danger btn-sm btn-delete btn-block" data-id="@team.Id"><span class="fas fa-minus-circle"></span> </button>

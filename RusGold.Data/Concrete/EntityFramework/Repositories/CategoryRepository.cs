@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace RusGold.Data.Concrete.EntityFramework.Repositories
 {
-    public class CarBrendModelRepository : EfEntityRepositoryBase<CarBrendModel>, ICarBrendModelRepository
+    public class CategoryRepository : EfEntityRepositoryBase<Category>, ICategoryRepository
     {
-        public CarBrendModelRepository(DbContext Context) : base(Context)
+        public CategoryRepository(DbContext Context) : base(Context)
         {
         }
     }

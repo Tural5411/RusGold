@@ -1,0 +1,24 @@
+﻿@model RusGold.Entities.DTOs.CategoryAddDto
+
+
+    <div class="container">
+        <form asp-action="Add" asp-controller="Category" method="post" enctype="multipart/form-data" id="form-model-add">
+            <div asp-validation-summary="All" class="text-danger" id="validation-summary" aria-hidden="true" style="display: none;"></div>
+            <input type="hidden" asp-for="ParentId" value="0" />
+            <div class="form-group">
+                <label asp-for="Name">Kataloq Adı</label>
+                <input class="form-control" asp-for="Name" />
+                <span class="text-danger" asp-validation-for="Name"></span>
+            </div>
+            @*<div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" asp-for="IsActive" />
+                    <label asp-for="IsActive" class="form-check-label"></label>
+                    <span class="text-danger" asp-validation-for="IsActive"></span>
+                </div>*@
+            <div class="form-group">
+                <a asp-action="Index" asp-controller="Category" asp-area="Admin" class="btn btn-danger btn-block"><span class="fas fa-times"></span>Ləğv et</a>
+                <button type="submit" class="btn btn-primary btn-block"><span class="fas fa-save"></span>Yadda saxla</button>
+            </div>
+        </form>
+    </div>
+

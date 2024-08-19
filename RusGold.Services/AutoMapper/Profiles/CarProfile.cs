@@ -13,9 +13,9 @@ namespace RusGold.Services.AutoMapper.Profiles
     {
         public CarProfile()
         {
-            CreateMap<CarAddDto, Car>().ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(x => DateTime.Now));
-            CreateMap<CarUpdateDto, Car>().ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(x => DateTime.Now));
-            CreateMap<Car, CarUpdateDto>();
+            CreateMap<ProductAddDto, Product>().ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(x => DateTime.Now));
+            CreateMap<ProductUpdateDto, Product>().ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(x => DateTime.Now));
+            CreateMap<Product, ProductUpdateDto>();
         }
     }
 }

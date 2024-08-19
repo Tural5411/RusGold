@@ -11,7 +11,7 @@ namespace RusGold.Data.Concrete.EntityFramework.Mappings
             builder.HasKey(c => c.Id);
             builder.Property(c => c.Id).ValueGeneratedOnAdd();
 
-            builder.Property(c => c.CarId);
+            builder.Property(c => c.ProductId);
             builder.Property(c => c.ImageUrl);
             builder.Property(c => c.IsActive).IsRequired();
             builder.Property(c => c.IsDeleted).IsRequired();

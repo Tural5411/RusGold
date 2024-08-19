@@ -18,35 +18,35 @@ using System.Threading.Tasks;
 namespace RusGold.Mvc.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class CarBrendModelController : BaseController
+    public class CategoryController : BaseController
     {
-        private readonly ICarBrendModelService _carService;
+        private readonly ICategoryService _categoryService;
         private readonly IToastNotification _toastNotification;
 
-        public CarBrendModelController(ICarBrendModelService carService, IToastNotification toastNotification, UserManager<User> userManager, IMapper mapper, IImageHelper imageHelper) : base(userManager, mapper, imageHelper)
+        public CategoryController(ICategoryService carService, IToastNotification toastNotification, UserManager<User> userManager, IMapper mapper, IImageHelper imageHelper) : base(userManager, mapper, imageHelper)
         {
-            _carService = carService;
+            _categoryService = carService;
             _toastNotification = toastNotification;
         }
 
         public async Task<IActionResult> Index()
         {
-            var result = await _carService.GetAllByNonDeletedAndActive();
+            var result = await _categoryService.GetAllByNonDeletedAndActive();
             return View(result.Data);
         }
         [HttpGet]
         public IActionResult Add()
         {
-            var result = _carService.GetAllByNonDeletedAndActive();
-            ViewBag.brendModels = result.Result.Data.CarBrendModels.Where(x=>x.ParentId==0);
+            var result = _categoryService.GetAllByNonDeletedAndActive();
+            ViewBag.brendModels = result.Result.Data.Categories.Where(x=>x.ParentId==0);
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Add(CarBrendModelAddDto carAddDto)
+        public async Task<IActionResult> Add(CategoryAddDto carAddDto)
         {
             if (ModelState.IsValid)
             {
-                var result = await _carService.Add(carAddDto, LoggedInUser.UserName);
+                var result = await _categoryService.Add(carAddDto, LoggedInUser.UserName);
                 if (result.ResultStatus == ResultStatus.Succes)
                 {
                     _toastNotification.AddSuccessToastMessage(result.Message, new ToastrOptions
@@ -63,13 +63,13 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
             return View(carAddDto);
         }
         [HttpGet]
-        public async Task<IActionResult> Update(int carBrendModelId)
+        public async Task<IActionResult> Update(int categoryId)
         {
-            var result = await _carService.GetCarBrendModelUpdateDto(carBrendModelId);
+            var result = await _categoryService.GetCategoryUpdateDto(categoryId);
             if (result.ResultStatus == ResultStatus.Succes)
             {
                 var videoUpdateViewModel = Mapper.Map<CarBrendModelUpdateViewModel>(result.Data);
-                videoUpdateViewModel.Id = carBrendModelId;
+                videoUpdateViewModel.Id = categoryId;
                 return View(videoUpdateViewModel);
             }
             return NotFound();
@@ -80,8 +80,8 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 
-                var videoUpdateDto = Mapper.Map<CarBrendModelUpdateDto>(videoUpdateViewModel);
-                var result = await _carService.Update(videoUpdateDto, LoggedInUser.UserName);
+                var videoUpdateDto = Mapper.Map<CategoryUpdateDto>(videoUpdateViewModel);
+                var result = await _categoryService.Update(videoUpdateDto, LoggedInUser.UserName);
                 if (result.ResultStatus == ResultStatus.Succes)
                 {
                     _toastNotification.AddSuccessToastMessage(result.Message, new ToastrOptions
@@ -101,7 +101,7 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
         [HttpPost]
         public async Task<JsonResult> Delete(int carBrendModelId)
         {
-            var result = await _carService.Delete(carBrendModelId, LoggedInUser.UserName);
+            var result = await _categoryService.Delete(carBrendModelId, LoggedInUser.UserName);
             var deletedVideo = JsonSerializer.Serialize(result);
             return Json(deletedVideo);
         }

@@ -55,7 +55,7 @@ namespace RusGold.Services.Concrete
         }
         public async Task<IDataResult<PhotoDto>> Get(int PhotoId)
         {
-            var Photo = await _unitOfWork.Photos.GetAsync(a => a.Id == PhotoId, a => a.Car);
+            var Photo = await _unitOfWork.Photos.GetAsync(a => a.Id == PhotoId, a => a.Product);
             if (Photo != null)
             {
                 return new DataResult<PhotoDto>(ResultStatus.Succes, new PhotoDto
@@ -73,8 +73,8 @@ namespace RusGold.Services.Concrete
         }
         public async Task<IDataResult<PhotoListDto>> GetAllByNonDeletedAndActive(int projectId)
         {
-            var Photos = await _unitOfWork.Photos.GetAllAsync(a=>a.CarId==projectId,
-                 a => a.Car);
+            var Photos = await _unitOfWork.Photos.GetAllAsync(a=>a.ProductId==projectId,
+                 a => a.Product);
             if (Photos.Count > -1)
             {
                 return new DataResult<PhotoListDto>(ResultStatus.Succes, new PhotoListDto

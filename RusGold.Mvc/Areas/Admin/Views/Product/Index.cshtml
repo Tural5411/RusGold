@@ -1,4 +1,4 @@
-﻿@model RusGold.Entities.DTOs.CarListDto
+﻿@model RusGold.Entities.DTOs.ProductListDto
 @using RusGold.Shared.Utilities.Results.ComplexTypes
 @{ Layout = "_Layout";
     ViewBag.Title = "Article Index"; }
@@ -53,20 +53,17 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    @foreach (var article in Model.Cars)
+                    @foreach (var article in Model.Products)
                     {
                     <tr class="odd" name="@article.Id">
                         <td>@article.Id</td>
                         <td>@article.Name</td>
-                        <td>@article.Body</td>
                         <td>@article.Price</td>
                         <td><img src="~/img/@article.ThumbNail" class="my-image-table" alt="@article.Name" /></td>
-                        <td>@article.EngineSize</td>
-                        <td>@article.Year</td>
                         <td>@(article.IsActive ? "Bəli" : "Xeyr")</td>
                         <td>@(article.IsDeleted ? "Bəli" : "Xeyr")</td>
                         <td class="text-center">
-                            <a class="btn btn-primary btn-sm" data-id="@article.Id" asp-area="Admin" asp-controller="Car" asp-action="Update" asp-route-carId="@article.Id"><span class="fas fa-edit"></span> </a>
+                            <a class="btn btn-primary btn-sm" data-id="@article.Id" asp-area="Admin" asp-controller="Product" asp-action="Update" asp-route-productId="@article.Id"><span class="fas fa-edit"></span> </a>
                             <button class="btn btn-danger btn-sm btn-delete" data-id="@article.Id"><span class="fas fa-minus-circle"></span> </button>
                         </td>
                     </tr>
@@ -92,7 +89,7 @@
     <script>
         $(document).ready(function () {
             $("#btnAdd").click(function () {
-                window.location.href = '@Url.Action("Add","Car")';
+                window.location.href = '@Url.Action("Add","Product")';
             })
 
         });

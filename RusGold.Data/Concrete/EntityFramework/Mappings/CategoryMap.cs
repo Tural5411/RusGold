@@ -4,9 +4,9 @@ using RusGold.Entities.Concrete;
 
 namespace RusGold.Data.Concrete.EntityFramework.Mappings
 {
-    public class CarBrendModelMap : IEntityTypeConfiguration<CarBrendModel>
+    public class CategoryMap : IEntityTypeConfiguration<Category>
     {
-        public void Configure(EntityTypeBuilder<CarBrendModel> builder)
+        public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.HasKey(c => c.Id);
 
@@ -21,6 +21,9 @@ namespace RusGold.Data.Concrete.EntityFramework.Mappings
                 .HasMaxLength(70);
 
             builder.Property(c => c.Description)
+                .HasMaxLength(500);
+
+            builder.Property(c => c.Thumbnail)
                 .HasMaxLength(500);
 
             builder.Property(c => c.CreatedDate)

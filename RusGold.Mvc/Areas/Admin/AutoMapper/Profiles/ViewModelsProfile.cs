@@ -15,11 +15,11 @@ namespace RusGold.Mvc.AutoMapper.Profiles
             CreateMap<QuestionUpdateDto, QuestionUpdateViewModel>().ReverseMap();
 
             CreateMap<SliderAddViewModel, SliderAddDto>();
-            CreateMap<CarAddViewModel, CarAddDto>();
-            CreateMap<CarAddDto, CarAddViewModel>();
-            CreateMap<CarUpdateDto, CarUpdateViewModel>().ReverseMap();
-            CreateMap<CarBrendModelUpdateDto, CarBrendModelUpdateViewModel>().ReverseMap();
-            CreateMap<CarBrendModel, CarBrendModelUpdateViewModel>().ReverseMap();
+            CreateMap<ProductViewModel, ProductAddDto>();
+            CreateMap<ProductAddDto, ProductViewModel>();
+            CreateMap<ProductUpdateDto, CarUpdateViewModel>().ReverseMap();
+            CreateMap<CategoryUpdateDto, CarBrendModelUpdateViewModel>().ReverseMap();
+            CreateMap<Category, CarBrendModelUpdateViewModel>().ReverseMap();
             CreateMap<SliderUpdateDto, SliderUpdateViewModel>().ReverseMap();
 
             CreateMap<PhotoAddDto, PhotoAddViewModel>().ReverseMap();

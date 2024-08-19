@@ -9,62 +9,41 @@ using RusGold.Entities.Concrete;
 
 namespace RusGold.Mvc.Areas.Admin.Models
 {
-    public class CarAddViewModel
+    public class ProductViewModel
     {
-        [DisplayName("Ad")]
+        [Display(Name = "Məhsulun Adı")]
         public string Name { get; set; }
-        [DisplayName("Model")]
-        public int ModelId { get; set; }
-        [DisplayName("Brend")]
-        public int BrendId { get; set; }
 
-        [DisplayName("Qiymət")]
-        public string Price { get; set; }
+        [Display(Name = "Qiymət")]
+        public float? Price { get; set; }
 
-        [DisplayName("At Gücü")]
-        public string HorsePower { get; set; }
+        [Display(Name = "Kartla Qiymət")]
+        public float? PriceByCard { get; set; }
 
-        [DisplayName("Məzmun")]
+        [Display(Name = "Məzmun")]
         public string Content { get; set; }
 
-        [DisplayName("Texniki Parametrlər")]
-        public string TechnicalParameters { get; set; }
+        [Display(Name = "Qızıl Məhsul")]
+        public bool? IsGold { get; set; }
 
-        [DisplayName("Şəkil")]
+        [Display(Name = "Şəkil")]
         public string ThumbNail { get; set; }
 
-        [DisplayName("SEO Təsviri")]
+        [Display(Name = "SEO Təsviri")]
         public string SeoDescription { get; set; }
 
-        [DisplayName("SEO Etiketləri")]
+        [Display(Name = "SEO Açar Sözləri")]
         public string SeoTags { get; set; }
 
-        [DisplayName("İstifadəçi ID")]
+        [Display(Name = "Kateqoriya")]
+        public int? CategoryId { get; set; }
+
+        [Display(Name = "Vahid")]
+        public int? UnitId { get; set; }
+
+        [Display(Name = "İstifadəçi İd")]
         public int UserId { get; set; }
 
-        [DisplayName("Yaradanın Adı")]
-        public string CreatedByName { get; set; }
-
-        [DisplayName("Bədən Tipi")]
-        public string Body { get; set; }
-
-        [DisplayName("Yanacaq Növü")]
-        public string FuelType { get; set; }
-
-        [DisplayName("İl")]
-        public string Year { get; set; }
-
-        [DisplayName("Transmissiya")]
-        public string Transmission { get; set; }
-
-        [DisplayName("Sürüş Tipi")]
-        public string DriveType { get; set; }
-
-        [DisplayName("Rəng")]
-        public string Color { get; set; }
-
-        [DisplayName("Mühərrik Həcmi")]
-        public string EngineSize { get; set; }
         [DisplayName("Şəkil")]
         [Required(ErrorMessage = "Zəhmət olmasa {0} seçin")]
         [DataType(DataType.Upload)]
@@ -75,7 +54,5 @@ namespace RusGold.Mvc.Areas.Admin.Models
         public bool IsActive { get; set; }
         public IFormFileCollection CarPhotos { get; set; }
         public IList<PhotoAddViewModel> Photos { get; set; }
-        public IList<CarBrendModel> CarModels { get; set; }
-        public IList<CarBrendModel> CarBrends { get; set; }
     }
 }

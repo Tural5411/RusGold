@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RusGold.Data.Concrete.EntityFramework.Repositories
 {
-    public class CarRepository : EfEntityRepositoryBase<Car>, ICarRepository
+    public class ProductRepository : EfEntityRepositoryBase<Product>, IProductRepository
     {
-        public CarRepository(DbContext Context) : base(Context)
+        public ProductRepository(DbContext Context) : base(Context)
         {
         }
     }

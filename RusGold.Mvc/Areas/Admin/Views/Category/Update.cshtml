@@ -1,6 +1,6 @@
 ﻿@model RusGold.Mvc.Areas.Admin.Models.CarBrendModelUpdateViewModel
 
-<form asp-action="Update" asp-controller="CarBrendModel" method="post" enctype="multipart/form-data" id="form-team-add">
+<form asp-action="Update" asp-controller="Category" method="post" enctype="multipart/form-data" id="form-team-add">
     <input type="hidden" name="IsValid" value="@ViewData.ModelState.IsValid.ToString()" />
     <input type="hidden" asp-for="Id" value="@Model.Id" />
     <input type="hidden" asp-for="ParentId" value="@Model.ParentId" />
@@ -9,13 +9,13 @@
     <div asp-validation-summary="All" class="text-danger" id="validation-summary" aria-hidden="true" style="display: none;"></div>
 
     <div class="form-group">
-        <label asp-for="Name"></label>
+        <label asp-for="Name">Kataloq adı</label>
         <input class="form-control" asp-for="Name" />
         <span class="text-danger" asp-validation-for="Name"></span>
     </div>
 
     <div class="form-group">
-        <a asp-action="Index" asp-controller="CarBrendModel" asp-area="Admin" class="btn btn-danger btn-block"><span class="fas fa-times"></span>Ləğv et</a>
+        <a asp-action="Index" asp-controller="Category" asp-area="Admin" class="btn btn-danger btn-block"><span class="fas fa-times"></span>Ləğv et</a>
         <button type="submit" class="btn btn-primary btn-block"><span class="fas fa-save"></span>Yadda saxla</button>
     </div>
 </form>

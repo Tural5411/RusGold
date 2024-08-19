@@ -1,0 +1,113 @@
+﻿@using RusGold.Entities.Concrete
+@model RusGold.Mvc.Areas.Admin.Models.ProductViewModel
+
+<form asp-action="Add" asp-controller="Product" method="post" enctype="multipart/form-data" id="form-team-add" class="container mt-5">
+    <input type="hidden" name="IsValid" value="@ViewData.ModelState.IsValid.ToString()" />
+    <div asp-validation-summary="All" class="alert alert-danger" id="validation-summary" aria-hidden="true" style="display: none;"></div>
+    <input type="hidden" class="form-control" asp-for="UserId" value="1" />
+    <div class="row">
+        <!-- Left Column -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input class="form-control" asp-for="Name" />
+
+                <span class="text-danger" asp-validation-for="Name"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="brendList" asp-for="CategoryId"></label>
+                @*<select asp-for="BrendId" asp-items="@(new SelectList(Model.CarBrends ?? new List<CarBrendModel>(), "Id", "Name"))"
+                            id="brendList" class="form-control">
+                        <option></option>
+                    </select>*@
+                <span class="text-danger" asp-validation-for="CategoryId"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="brendList" asp-for="UnitId"></label>
+                @*<select asp-for="BrendId" asp-items="@(new SelectList(Model.CarBrends ?? new List<CarBrendModel>(), "Id", "Name"))"
+                            id="brendList" class="form-control">
+                        <option></option>
+                    </select>*@
+                <span class="text-danger" asp-validation-for="UnitId"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="categoryList" asp-for="IsGold"></label>
+                <select asp-for="IsGold" id="modelList" class="form-control">
+                    <option></option>
+                </select>
+                <span class="text-danger" asp-validation-for="IsGold"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input class="form-control" asp-for="Price" />
+                <span class="text-danger" asp-validation-for="Price"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="PriceByCard" class="control-label"></label>
+                <input class="form-control" asp-for="PriceByCard" />
+                <span class="text-danger" asp-validation-for="PriceByCard"></span>
+            </div>
+
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <textarea class="form-control" asp-for="Content"></textarea>
+                <span class="text-danger" asp-validation-for="Content"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SeoDescription" class="control-label"></label>
+                <input class="form-control" asp-for="SeoDescription" />
+                <span class="text-danger" asp-validation-for="SeoDescription"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SeoTags" class="control-label"></label>
+                <input class="form-control" asp-for="SeoTags" />
+                <span class="text-danger" asp-validation-for="SeoTags"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Picture Upload -->
+        <div class="col-md-12">
+            <div class="form-group">
+                <label asp-for="PictureFile" class="control-label">Məhsulun saytda görsənən ilk şəkli</label>
+                <input type="file" class="form-control-file" asp-for="PictureFile" />
+                <span class="text-danger" asp-validation-for="PictureFile"></span>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="thumbnailUpload" asp-for="CarPhotos">Məhsulun ətraflı şəkilləri</label>
+                <input type="file" accept="image/*" multiple id="thumbnailUpload" class="form-control-file" asp-for="CarPhotos" placeholder="Zəhmət Olmasa Şəkil seçin" />
+                <span class="text-danger" asp-validation-for="CarPhotos"></span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" asp-for="IsActive" />
+        <label asp-for="IsActive" class="form-check-label"></label>
+        <span class="text-danger" asp-validation-for="IsActive"></span>
+    </div>
+
+    <div class="form-group text-center">
+        <a href="/Admin/Car" class="btn btn-danger btn-block">
+            <span class="fas fa-times"></span> Ləğv et
+        </a>
+        <button type="submit" class="btn btn-primary btn-block">
+            <span class="fas fa-save"></span> Yadda saxla
+        </button>
+    </div>
+</form>

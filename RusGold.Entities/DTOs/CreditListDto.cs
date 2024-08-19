@@ -7,6 +7,5 @@ namespace RusGold.Entities.DTOs
     public class CreditListDto : DtoGetBase
     {
         public IList<Credits> Credits { get; set; }
-        public IList<CarBrendModel> CarBrendModels { get; set; }
     }
 }

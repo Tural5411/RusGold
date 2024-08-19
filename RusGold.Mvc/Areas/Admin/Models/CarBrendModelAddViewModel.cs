@@ -9,7 +9,7 @@ using RusGold.Entities.Concrete;
 
 namespace RusGold.Mvc.Areas.Admin.Models
 {
-    public class CarBrendModelAddViewModel
+    public class CategoryAddViewModel
     {
         [Required]
         public int Id { get; set; }
@@ -19,7 +19,6 @@ namespace RusGold.Mvc.Areas.Admin.Models
         [DisplayName("Aktivdir ?")]
         [Required(ErrorMessage = "{0}  boş ola bilməz!")]
         public bool IsActive { get; set; }
-        public bool IsBrand { get; set; }
         public bool IsDeleted { get; set; }
     }
 }

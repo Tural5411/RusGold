@@ -14,25 +14,41 @@ namespace RusGold.Mvc.Areas.Admin.Models
     {
         [Required]
         public int Id { get; set; }
+        [Display(Name = "Məhsulun Adı")]
         public string Name { get; set; }
-        public int ModelId { get; set; }
-        public int BrendId { get; set; }
-        public string Price { get; set; }
-        public string HorsePower { get; set; }
+
+        [Display(Name = "Qiymət")]
+        public float? Price { get; set; }
+
+        [Display(Name = "Kartla Qiymət")]
+        public float? PriceByCard { get; set; }
+
+        [Display(Name = "Məzmun")]
         public string Content { get; set; }
-        public string TechnicalParameters { get; set; }
+
+        [Display(Name = "Qızıl Məhsul")]
+        public bool? IsGold { get; set; }
+
+        [Display(Name = "Şəkil")]
+        public string ThumbNail { get; set; }
+
+        [Display(Name = "SEO Təsviri")]
         public string SeoDescription { get; set; }
+
+        [Display(Name = "SEO Açar Sözləri")]
         public string SeoTags { get; set; }
+
+        [Display(Name = "Kateqoriya")]
+        public int? CategoryId { get; set; }
+
+        [Display(Name = "Vahid")]
+        public int? UnitId { get; set; }
+
+        [Display(Name = "İstifadəçi İd")]
         public int UserId { get; set; }
-        public string CreatedByName { get; set; }
-        public string Body { get; set; }
-        public string FuelType { get; set; }
-        public string Year { get; set; }
-        public string Transmission { get; set; }
-        public string DriveType { get; set; }
-        public string Color { get; set; }
-        public string EngineSize { get; set; }
+
         [DisplayName("Şəkil")]
+        [Required(ErrorMessage = "Zəhmət olmasa {0} seçin")]
         [DataType(DataType.Upload)]
         public IFormFile PictureFile { get; set; }
         public string Thumbnail { get; set; }

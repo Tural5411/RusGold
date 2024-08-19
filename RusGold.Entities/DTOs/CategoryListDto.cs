@@ -8,8 +8,8 @@ using RusGold.Shared.Entities.Abstract;
 
 namespace RusGold.Entities.DTOs
 {
-    public class CarBrendModelDto:DtoGetBase
+    public class CategoryListDto : DtoGetBase
     {
-        public CarBrendModel CarBrendModel { get; set; }
+        public IList<Category> Categories { get; set; }
     }
 }

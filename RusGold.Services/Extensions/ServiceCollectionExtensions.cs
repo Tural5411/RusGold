@@ -38,10 +38,10 @@ namespace RusGold.Services.Extensions
             });
             serviceCollection.AddScoped<IUnitOfWork, UnitOfWork>();
             serviceCollection.AddScoped<IQuestionService, QuestionManager>();
-            serviceCollection.AddScoped<ICarBrendModelService, CarBrendModelManager>();
+            serviceCollection.AddScoped<ICategoryService, CategoryManager>();
             serviceCollection.AddScoped<IArticleService, ArticleManager>();
             serviceCollection.AddScoped<ISliderService, SliderManager>();
-            serviceCollection.AddScoped<ICarService, CarManager>();
+            serviceCollection.AddScoped<IProductService, ProductManager>();
             serviceCollection.AddScoped<IRegisterService, RegisterManager>();
             serviceCollection.AddSingleton<IMailService, MailManager>();
             serviceCollection.AddScoped<IPhotoService, PhotoManager>();

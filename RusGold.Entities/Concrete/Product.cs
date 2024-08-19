@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 
 namespace RusGold.Entities.Concrete
 {
-    public class Car:EntityBase,IEntity
+    public class Product:EntityBase,IEntity
     {
         public string Name { get; set; }
         public int CategoryId { get; set; }
+        public int UnitId { get; set; }
         public string PriceByCard { get; set; }
         public string Price { get; set; }
         public bool IsGold { get; set; }
