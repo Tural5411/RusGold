@@ -59,6 +59,22 @@
     <None Include="wwwroot\lib\jquery\dist\jquery.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\rusGold\js\main.js" />
+    <None Include="wwwroot\rusGold\js\number.js" />
+    <None Include="wwwroot\rusGold\vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\rusGold\vendor\fontawesome\webfonts\fa-brands-400.svg" />
+    <None Include="wwwroot\rusGold\vendor\fontawesome\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\rusGold\vendor\fontawesome\webfonts\fa-regular-400.svg" />
+    <None Include="wwwroot\rusGold\vendor\fontawesome\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\rusGold\vendor\fontawesome\webfonts\fa-solid-900.svg" />
+    <None Include="wwwroot\rusGold\vendor\fontawesome\webfonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\rusGold\vendor\jquery\jquery.min.js" />
+    <None Include="wwwroot\rusGold\vendor\nouislider\nouislider.min.js" />
+    <None Include="wwwroot\rusGold\vendor\owl-carousel\owl.carousel.min.js" />
+    <None Include="wwwroot\rusGold\vendor\photoswipe\default-skin\default-skin.svg" />
+    <None Include="wwwroot\rusGold\vendor\photoswipe\photoswipe-ui-default.min.js" />
+    <None Include="wwwroot\rusGold\vendor\photoswipe\photoswipe.min.js" />
+    <None Include="wwwroot\rusGold\vendor\select2\js\select2.min.js" />
   </ItemGroup>
 
 
