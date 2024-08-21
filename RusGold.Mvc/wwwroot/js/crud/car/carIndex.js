@@ -8,7 +8,7 @@
         buttons: [
             {
                 
-                text: 'Yeni',
+                text: 'Yeni Model',
                 attr: {
                     id: "btnAdd"
                 },
@@ -66,7 +66,7 @@
         const articleTitle = tableRow.find('td:eq(2)').text(); //2 = 2ci indexe sahib deyeri al
         Swal.fire({
             title: 'Silmək istədiyinizdən əminsiniz?',
-            text: `${articleTitle} adlı məhsul silinəcəkdir!`,
+            text: `${articleTitle} adlı model silinəcəkdir!`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -79,12 +79,12 @@
                     type: 'POST',
                     dataType: 'json',
                     data: { articleId: id },
-                    url: '/Admin/Product/Delete/',
+                    url: '/Admin/Car/Delete/',
                     success: function (data) {
                         const articleResult = jQuery.parseJSON(data);
                         if (articleResult.ResultStatus === 0) {
                             Swal.fire(
-                                'məhsul silindi!',
+                                'Model silindi!',
                                 `${articleResult.Message}`,
                                 'success'
                             );
@@ -125,7 +125,7 @@
                     type: 'POST',
                     dataType: 'json',
                     data: { photoId: id },
-                    url: '/Admin/Product/DeletePhoto/',
+                    url: '/Admin/Project/DeletePhoto/',
                     success: function (data) {
                         const articleResult = jQuery.parseJSON(data);
                         if (articleResult.ResultStatus === 0) {
