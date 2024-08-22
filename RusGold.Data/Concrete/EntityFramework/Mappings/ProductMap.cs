@@ -58,6 +58,8 @@ namespace RusGold.Data.Concrete.EntityFramework.Mappings
                 .IsRequired()
                 .HasMaxLength(50);
 
+            builder.ToTable("Products");
+
         }
     }
 }

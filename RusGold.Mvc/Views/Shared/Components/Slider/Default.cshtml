@@ -1,0 +1,22 @@
+﻿@model RusGold.Entities.DTOs.SliderListDto
+
+<section class="boxcar-banner-section-four">
+    <div class="banner-slider-v4">
+        @foreach (var item in Model.Sliders)
+        {
+            <div class="banner-slide">
+                <img src="~/img/@item.ImageUrl" alt="@item.Name - Cahan Motors">
+                <div class="right-box">
+                    <div class="boxcar-container">
+                        <div class="content-box">
+                            <span class="sub-title" data-animation-in="fadeInDown">
+                                ₼@item.CreatedByName
+                            </span>
+                            <h1 data-animation-in="fadeInUp" data-delay-in="0.2">@item.Name</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>

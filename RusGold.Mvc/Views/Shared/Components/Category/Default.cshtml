@@ -1,0 +1,47 @@
+﻿@model RusGold.Entities.DTOs.CategoryListDto
+
+<div class="block block-categories">
+	<div class="container">
+		<div class="block-categories__header">
+			<div class="block-categories__title">
+				Каталог
+				<div class="decor block-categories__title-decor decor--type--center">
+					<div class="decor__body">
+						<div class="decor__start"></div>
+						<div class="decor__end"></div>
+						<div class="decor__center"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="block-categories__body">
+		<div class="decor block-categories__body-decor decor--type--bottom">
+			<div class="decor__body">
+				<div class="decor__start"></div>
+				<div class="decor__end"></div>
+				<div class="decor__center"></div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="block-categories__list">
+				@foreach (var item in Model.Categories)
+				{
+					<div class="block-categories__item category-card category-card--layout--classic">
+						<div class="category-card__body">
+							<div class="category-card__content" style="justify-content: space-evenly;">
+								<div class="category-card__image image image--type--category">
+									<a href="#" class="image__body"><img class="image__tag" src="~/img/@item.Thumbnail" alt="@item.Name" /></a>
+									<div class="category-card__info">
+										<div class="category-card__name"><a href="#">@item.Name</a></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				}
+			
+			</div>
+		</div>
+	</div>
+</div>
