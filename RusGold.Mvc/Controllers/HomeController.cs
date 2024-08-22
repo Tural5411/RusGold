@@ -23,10 +23,19 @@ namespace RusGold.Mvc.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult RussianPost()
         {
             return View();
         }
+        public IActionResult RadioPreparation()
+        {
+            return View();
+        }
+        public IActionResult SdekRadioShipping()
+        {
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
