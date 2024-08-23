@@ -1,0 +1,71 @@
+﻿@model RusGold.Mvc.Models.ArticleDetailViewModel
+@using RusGold.Entities.DTOs
+@using RusGold.Mvc.Extensions
+@{
+    Layout = "_Layout";
+    ViewBag.Title = Model.ArticleDto.Article.Title;
+    ViewBag.Description = Model.ArticleDto.Article.SeoDescription;
+    ViewBag.Author = Model.ArticleDto.Article.SeoAuthor;
+    ViewBag.Tags = Model.ArticleDto.Article.SeoTags;
+    var listTag = ViewBag.listTags;
+    ViewBag.image = Model.ArticleDto.Article.ThumbNail;
+    string link = $"/Bloq/{Url.FriendlyUrlHelper(Model.ArticleDto.Article.Title).ToLower().ToString()}/{Model.ArticleDto.Article.Id}";
+    ViewBag.seolink = link;
+    ViewBag.datetime = Model.ArticleDto.Article.CreatedDate;
+    ViewBag.modifiedtime = Model.ArticleDto.Article.ModifiedDate;
+}
+
+
+<div class="site__body">
+    <div class="block post-view">
+        <div class="post-view__header post-header">
+            <div class="post-header__body">
+                <div class="post-header__categories">
+                    <ul class="post-header__categories-list">
+                    </ul>
+                </div>
+                <h1 class="post-header__title">@Model.ArticleDto.Article.Title</h1>
+                <div class="post-header__meta">
+                    <ul class="post-header__meta-list">
+                        <li class="post-header__meta-item">K <a href="#" class="post-header__meta-link">Радио Детали</a></li>
+                        <li class="post-header__meta-item">@Model.ArticleDto.Article.CreatedDate.ToShortDateString()</li>
+                        <li class="post-header__meta-item"><a href="#" class="post-header__meta-link">Количество просмотров @Model.ArticleDto.Article.ViewsCount</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="decor post-header__decor decor--type--bottom">
+                <div class="decor__body">
+                    <div class="decor__start"></div>
+                    <div class="decor__end"></div>
+                    <div class="decor__center"></div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="post-view__body">
+                <div class="post-view__item post-view__item-post">
+                    <div class="post-view__card post">
+                        <div class="post__body typography">
+                            <p>
+                                @Html.Raw(Model.ArticleDto.Article.Content)
+                            </p>
+                        </div>
+                        <div class="post__footer">
+                            <div class="post__tags tags tags--sm">
+                                <div class="tags__list">
+                                    @foreach (var item in listTag)
+                                    {
+                                        <a href="#">@item</a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="block-space block-space--layout--before-footer"></div>
+</div>

@@ -1,0 +1,46 @@
+﻿@model RusGold.Entities.DTOs.CategoryListDto
+<div class="site__body">
+    <div class="block-header block-header--has-breadcrumb block-header--has-title">
+        <div class="container">
+            <div class="block-header__body">
+                <nav class="breadcrumb block-header__breadcrumb" aria-label="breadcrumb">
+                    <ol class="breadcrumb__list">
+                        <li class="breadcrumb__spaceship-safe-area" role="presentation"></li>
+                        <li class="breadcrumb__item breadcrumb__item--parent breadcrumb__item--first"><a href="/" class="breadcrumb__item-link">Домашняя страница</a></li>
+                        <li class="breadcrumb__item breadcrumb__item--current breadcrumb__item--last" aria-current="page"><span class="breadcrumb__item-link">Каталог</span></li>
+                        <li class="breadcrumb__title-safe-area" role="presentation" style="--block-header-title-width: 242.75px;"></li>
+                    </ol>
+                </nav>
+                <h1 class="block-header__title">Каталог радиодеталей</h1>
+            </div>
+        </div>
+    </div>
+    <div class="block block-split">
+        <div class="container">
+            <div class="block-split__row row no-gutters">
+                <div class="block-split__item block-split__item-content col-auto">
+                    <div class="block">
+                        <div class="categories-list categories-list--layout--columns-6-full">
+                            <ul class="categories-list__body">
+                                @foreach (var item in Model.Categories)
+                                {
+                                    <li class="categories-list__item">
+                                        <a href="">
+                                            <div class="image image--type--category">
+                                                <div class="image__body"><img class="image__tag" src="~/rusGold/images/categories/category-1-200x200.jpg" alt="" /></div>
+                                            </div>
+                                            <div class="categories-list__item-name">@item.Name</div>
+                                        </a>
+                                    </li>
+                                    <li class="categories-list__divider"></li>
+                                }
+                               
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="block-space block-space--layout--divider-nl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

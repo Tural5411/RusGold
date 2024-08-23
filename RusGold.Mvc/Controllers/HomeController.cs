@@ -23,6 +23,11 @@ namespace RusGold.Mvc.Controllers
             return View();
         }
 
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
         public IActionResult RussianPost()
         {
             return View();
