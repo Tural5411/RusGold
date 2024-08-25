@@ -23,19 +23,22 @@ namespace RusGold.Mvc.Controllers
             return View();
         }
 
+        [Route("Kontakt")]
         public IActionResult Contact()
         {
             return View();
         }
-
+        [Route("RussianPost")]
         public IActionResult RussianPost()
         {
             return View();
         }
+        [Route("RadioPreparation")]
         public IActionResult RadioPreparation()
         {
             return View();
         }
+        [Route("SdekRadioShipping")]
         public IActionResult SdekRadioShipping()
         {
             return View();

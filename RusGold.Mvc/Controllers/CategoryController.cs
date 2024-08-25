@@ -18,7 +18,7 @@ namespace RusGold.Mvc.Controllers
             _categoryService = categoryService;
         }
 
-
+        [Route("Katalog")]
         public async Task<IActionResult> Index()
         {
             var data = await _categoryService.GetAllByNonDeletedAndActive();

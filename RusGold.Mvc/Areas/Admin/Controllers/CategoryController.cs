@@ -42,11 +42,16 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Add(CategoryAddDto carAddDto)
+        public async Task<IActionResult> Add(CategoryAddViewModel categoryAddViewModel)
         {
             if (ModelState.IsValid)
             {
-                var result = await _categoryService.Add(carAddDto, LoggedInUser.UserName);
+                var articleAddDto = Mapper.Map<CategoryAddDto>(categoryAddViewModel);
+                var imageResult = await ImageHelper.UploadImage(categoryAddViewModel.Name,
+                    categoryAddViewModel.PictureFile, PictureType.Post);
+                articleAddDto.Thumbnail = imageResult.Data.FullName;
+
+                var result = await _categoryService.Add(articleAddDto,"Radiodetal");
                 if (result.ResultStatus == ResultStatus.Succes)
                 {
                     _toastNotification.AddSuccessToastMessage(result.Message, new ToastrOptions
@@ -60,27 +65,33 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
                     ModelState.AddModelError("", result.Message);
                 }
             }
-            return View(carAddDto);
+            return View(categoryAddViewModel);
         }
         [HttpGet]
         public async Task<IActionResult> Update(int categoryId)
         {
             var result = await _categoryService.GetCategoryUpdateDto(categoryId);
+
+
             if (result.ResultStatus == ResultStatus.Succes)
             {
-                var videoUpdateViewModel = Mapper.Map<CarBrendModelUpdateViewModel>(result.Data);
+                var videoUpdateViewModel = Mapper.Map<CategoryUpdateViewModel>(result.Data);
                 videoUpdateViewModel.Id = categoryId;
                 return View(videoUpdateViewModel);
             }
             return NotFound();
         }
         [HttpPost]
-        public async Task<IActionResult> Update(CarBrendModelUpdateViewModel videoUpdateViewModel)
+        public async Task<IActionResult> Update(CategoryUpdateViewModel videoUpdateViewModel)
         {
             if (ModelState.IsValid)
             {
-                
                 var videoUpdateDto = Mapper.Map<CategoryUpdateDto>(videoUpdateViewModel);
+
+                var imageResult = await ImageHelper.UploadImage(videoUpdateViewModel.Name,
+                    videoUpdateViewModel.PictureFile, PictureType.Post);
+                videoUpdateDto.Thumbnail = imageResult.Data.FullName;
+
                 var result = await _categoryService.Update(videoUpdateDto, LoggedInUser.UserName);
                 if (result.ResultStatus == ResultStatus.Succes)
                 {
@@ -89,7 +100,7 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
                         Title = "Uğurlu əməliyyat",
                         CloseButton = true
                     });
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index","Category",new { area = "Admin" });
                 }
                 else
                 {

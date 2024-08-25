@@ -1,37 +1,55 @@
 ﻿@using RusGold.Mvc.Extensions
 @model RusGold.Mvc.Models.ArticleViewModel
 
-<section class="blog-section">
-    <div class="boxcar-container">
-        <div class="boxcar-title wow fadeInUp">
-            <h2>Xəbərlər</h2>
-        </div>
-        <div class="row">
-            <!-- blog-block -->
-            @foreach (var item in Model.ArticleListDto.Articles)
-            {
-                <div class="blog-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box wow fadeInUp">
-                        <div class="image-box">
-                            <figure class="image">
-                                <a href="/Bloq/@Url.FriendlyUrlHelper(item.Title).ToLower()/@item.Id"><img src="~/img/@item.ThumbNail" alt="@item.Title"></a>
-                            </figure>
+    <div class="block block-posts-carousel block-posts-carousel--layout--list" data-layout="list">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-header__body">
+                    <h2 class="section-header__title">Лента новостей</h2>
+                    <div class="section-header__spring"></div>
+                    <ul class="section-header__links">
+                        <li class="section-header__links-item"><a href="#" class="section-header__links-link">Лента новостей</a></li>
+                        <li class="section-header__links-item"><a href="#" class="section-header__links-link">Статьи</a></li>
+                    </ul>
+                    <div class="section-header__arrows">
+                        <div class="arrow section-header__arrow section-header__arrow--prev arrow--prev">
+                            <button class="arrow__button" type="button">
+                                <svg width="7" height="11"><path d="M6.7,0.3L6.7,0.3c-0.4-0.4-0.9-0.4-1.3,0L0,5.5l5.4,5.2c0.4,0.4,0.9,0.3,1.3,0l0,0c0.4-0.4,0.4-1,0-1.3l-4-3.9l4-3.9C7.1,1.2,7.1,0.6,6.7,0.3z" /></svg>
+                            </button>
                         </div>
-                        <div class="content-box">
-                            <ul class="post-info">
-                                <li>Cahan Motors</li>
-                                <li>@item.CreatedDate.ToShortDateString()</li>
-                            </ul>
-                            <h6 class="title">
-                                <a href="/Bloq/@Url.FriendlyUrlHelper(item.Title).ToLower()/@item.Id" title="">
-                                    @item.Title
-                                </a>
-                            </h6>
+                        <div class="arrow section-header__arrow section-header__arrow--next arrow--next">
+                            <button class="arrow__button" type="button">
+                                <svg width="7" height="11">
+                                    <path d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9
+	C-0.1,9.8-0.1,10.4,0.3,10.7z" />
+                                </svg>
+                            </button>
                         </div>
                     </div>
+                    <div class="section-header__divider"></div>
                 </div>
-            }
-            
+            </div>
+            <div class="block-posts-carousel__carousel">
+                <div class="owl-carousel">
+                @foreach (var item in Model.ArticleListDto.Articles)
+                {
+                    <div class="block-posts-carousel__item">
+                        <div class="post-card">
+                            <div class="post-card__image">
+                                <a href="/Bloq/@Url.FriendlyUrlHelper(item.Title).ToLower()/@item.Id"><img src="~/img/@item.ThumbNail" alt="@item.Title"/></a>
+                            </div>
+                            <div class="post-card__content">
+                                <div class="post-card__title">
+                                    <h2><a href="/Bloq/@Url.FriendlyUrlHelper(item.Title).ToLower()/@item.Id">@item.Title</a></h2>
+                                </div>
+                                <div class="post-card__date">K <a href="#">Радио Детали</a> @item.CreatedDate.ToShortDateString()</div>
+                                <div class="post-card__more"><a href="/Bloq/@Url.FriendlyUrlHelper(item.Title).ToLower()/@item.Id" class="btn btn-secondary btn-sm">Читать далее</a></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
         </div>
     </div>
-</section>
+

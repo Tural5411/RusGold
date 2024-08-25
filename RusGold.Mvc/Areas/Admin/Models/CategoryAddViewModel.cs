@@ -16,6 +16,11 @@ namespace RusGold.Mvc.Areas.Admin.Models
         public int? ParentId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        [DisplayName("Şəkil")]
+        [Required(ErrorMessage = "Zəhmət olmasa {0} seçin")]
+        [DataType(DataType.Upload)]
+        public IFormFile PictureFile { get; set; }
+        public string Thumbnail { get; set; }
         [DisplayName("Aktivdir ?")]
         [Required(ErrorMessage = "{0}  boş ola bilməz!")]
         public bool IsActive { get; set; }

@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RusGold.Mvc.Areas.Admin.Models
 {
-    public class CarBrendModelUpdateViewModel
+    public class CategoryUpdateViewModel
     {
         public int Id { get; set; }
         public int? ParentId { get; set; }
@@ -18,8 +18,11 @@ namespace RusGold.Mvc.Areas.Admin.Models
         public string Description { get; set; }
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
-        [NotMapped]
-        public bool IsBrand { get; set; }
+        [DisplayName("Şəkil")]
+        [DataType(DataType.Upload)]
+        public IFormFile PictureFile { get; set; }
+        public string Thumbnail { get; set; }
+
     }
 
     public class CreditUpdateViewModel

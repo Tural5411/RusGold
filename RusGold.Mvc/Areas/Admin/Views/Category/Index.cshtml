@@ -57,7 +57,7 @@
                             <td class="center"><span class="status active">@(team.IsDeleted ? "Bəli" : "Xeyr")</span></td>
                             <td class="center">@team.CreatedDate.ToShortDateString()</td>
                             <td class="text-center">
-                                <a asp-area="Admin" data-id="@team.Id" class="btn btn-primary btn-sm btn-block" asp-action="Update" asp-controller="Category" asp-route-carBrendModelId="@team.Id">
+                                <a asp-area="Admin" data-id="@team.Id" class="btn btn-primary btn-sm btn-block" asp-action="Update" asp-controller="Category" asp-route-categoryId="@team.Id">
                                     <span class="fas fa-edit"></span>
                                 </a>
                                 <button class="btn btn-danger btn-sm btn-delete btn-block" data-id="@team.Id"><span class="fas fa-minus-circle"></span> </button>
