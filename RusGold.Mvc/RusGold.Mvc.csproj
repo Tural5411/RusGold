@@ -100,9 +100,4 @@
     <ProjectReference Include="..\RusGold.Services\RusGold.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\img\" />
-    <Folder Include="wwwroot\img\" />
-  </ItemGroup>
-
 </Project>

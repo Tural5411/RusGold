@@ -1,4 +1,9 @@
-﻿<div class="site__body">
+﻿<style>
+    .header {
+        grid-template-rows: 0px auto auto;
+    }
+</style>
+<div class="site__body">
     @await Component.InvokeAsync("Slider")
 	
 	@await Component.InvokeAsync("Category")
