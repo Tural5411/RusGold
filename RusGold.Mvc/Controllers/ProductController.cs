@@ -25,7 +25,7 @@ namespace RusGold.Mvc.Controllers
             _photoService = photoService;
             _categoryService = categoryService;
         }
-        [Route("Modeller")]
+        [Route("Produkt")]
         [HttpGet]
         public async Task<IActionResult> Index(int? brendId, int? modelId, int currentPage = 1, int pageSize = 6, bool isAscending = false)
         {

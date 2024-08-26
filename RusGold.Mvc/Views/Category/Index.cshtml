@@ -25,9 +25,9 @@
                                 @foreach (var item in Model.Categories)
                                 {
                                     <li class="categories-list__item">
-                                        <a href="">
+                                        <a asp-action="Index" asp-controller="Product" asp-route-categoryId="@item.Id">
                                             <div class="image image--type--category">
-                                                <div class="image__body"><img class="image__tag" src="~/rusGold/images/categories/category-1-200x200.jpg" alt="" /></div>
+                                                <div class="image__body"><img class="image__tag" src="~/img/@item.Thumbnail" alt="@item.Name" /></div>
                                             </div>
                                             <div class="categories-list__item-name">@item.Name</div>
                                         </a>
