@@ -168,27 +168,36 @@ namespace RusGold.Services.Concrete
             }
             return new DataResult<ProductListDto>(ResultStatus.Error, Messages.Car.NotFound(isPlural: true), null);
         }
-        public async Task<IDataResult<ProductListDto>> GetAllByPaging(int? brendId, int? modelId, int currentPage = 1,
+        public async Task<IDataResult<ProductListDto>> GetAllByPaging(int? categoryId, int currentPage = 1,
             int pageSize = 4, bool isAscending = false)
         {
-            pageSize = pageSize > 20 ? 20 : pageSize;
-            var Products = await _unitOfWork.Products.GetAllAsync(a => a.IsActive && !a.IsDeleted, a => a.User);
-
-            Products = isAscending
-                ? Products.OrderBy(a => a.Id).ToList()
-                : Products.OrderByDescending(a => a.Id).ToList();
-
-            var paginatedProducts = Products.Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
-
-            return new DataResult<ProductListDto>(ResultStatus.Succes, new ProductListDto
+            try
             {
-                Products = paginatedProducts,
-                CurrentPage = currentPage,
-                PageSize = pageSize,
-                TotalCount = Products.Count,
-                ResultStatus = ResultStatus.Succes,
-                IsAscending = false
-            });
+                pageSize = pageSize > 20 ? 20 : pageSize;
+                var Products = await _unitOfWork.Products.GetAllAsync(a => a.IsActive && !a.IsDeleted, a => a.User);
+
+                Products = isAscending
+                    ? Products.OrderBy(a => a.Id).ToList()
+                    : Products.OrderByDescending(a => a.Id).ToList();
+
+                var paginatedProducts = Products.Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+
+                return new DataResult<ProductListDto>(ResultStatus.Succes, new ProductListDto
+                {
+                    Products = paginatedProducts,
+                    CurrentPage = currentPage,
+                    PageSize = pageSize,
+                    TotalCount = Products.Count,
+                    ResultStatus = ResultStatus.Succes,
+                    IsAscending = false
+                });
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            
         }
     }
 }

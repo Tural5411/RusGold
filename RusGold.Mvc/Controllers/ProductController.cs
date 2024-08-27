@@ -27,9 +27,9 @@ namespace RusGold.Mvc.Controllers
         }
         [Route("Produkt")]
         [HttpGet]
-        public async Task<IActionResult> Index(int? brendId, int? modelId, int currentPage = 1, int pageSize = 6, bool isAscending = false)
+        public async Task<IActionResult> Index(int? categoryId,int currentPage = 1, int pageSize = 6, bool isAscending = false)
         {
-            var articleResult = await _productService.GetAllByPaging(brendId, modelId, currentPage, pageSize, isAscending);
+            var articleResult = await _productService.GetAllByPaging(categoryId, currentPage, pageSize, isAscending);
             return View(articleResult.Data);
         }
 
@@ -49,19 +49,19 @@ namespace RusGold.Mvc.Controllers
             }
             return NotFound();
         }
-        [HttpGet]
-        public JsonResult GetCreditDetails(int modelId,int period)
-        {
-            var creditDetails = _creditService.GetAllByNonDeletedAndActive().Result.Data.Credits.FirstOrDefault(x => x.ModelId == modelId && x.Period == period);
+        //[HttpGet]
+        //public JsonResult GetCreditDetails(int modelId,int period)
+        //{
+        //    var creditDetails = _creditService.GetAllByNonDeletedAndActive().Result.Data.Credits.FirstOrDefault(x => x.ModelId == modelId && x.Period == period);
 
-            return Json(new
-            {
-                initialPayment = creditDetails.InitialPayment,
-                period = creditDetails.Period,
-                monthlyPayment = creditDetails.MonthlyPay,
-                carPrice = creditDetails.CarPrice
-            });
-        }
+        //    return Json(new
+        //    {
+        //        initialPayment = creditDetails.InitialPayment,
+        //        period = creditDetails.Period,
+        //        monthlyPayment = creditDetails.MonthlyPay,
+        //        carPrice = creditDetails.CarPrice
+        //    });
+        //}
 
     }
 }
