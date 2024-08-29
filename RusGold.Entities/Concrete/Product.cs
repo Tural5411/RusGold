@@ -14,8 +14,8 @@ namespace RusGold.Entities.Concrete
         public string Name { get; set; }
         public int CategoryId { get; set; }
         public int UnitId { get; set; }
-        public string PriceByCard { get; set; }
-        public string Price { get; set; }
+        public double PriceByCard { get; set; }
+        public double Price { get; set; }
         public bool IsGold { get; set; }
         public string Content { get; set; }
         public string ThumbNail { get; set; }

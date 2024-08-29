@@ -51,12 +51,7 @@
 	v14.4C7,15.6,6.6,16,6.2,16H0.8C0.4,16,0,15.6,0,15.2L0,0.8C0,0.4,0.4,0,0.8,0l5.4,0C6.6,0,7,0.4,7,0.8z" />
                                             </svg>
                                         </button>
-                                        <button type="button" class="layout-switcher__button" data-layout="list" data-with-features="false">
-                                            <svg width="16" height="16">
-                                                <path d="M15.2,16H0.8C0.4,16,0,15.6,0,15.2V9.8C0,9.4,0.4,9,0.8,9h14.4C15.6,9,16,9.4,16,9.8v5.4C16,15.6,15.6,16,15.2,16z M15.2,7
-	H0.8C0.4,7,0,6.6,0,6.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v5.4C16,6.6,15.6,7,15.2,7z" />
-                                            </svg>
-                                        </button>
+
                                         <button type="button" class="layout-switcher__button" data-layout="table" data-with-features="false">
                                             <svg width="16" height="16">
                                                 <path d="M15.2,16H0.8C0.4,16,0,15.6,0,15.2v-2.4C0,12.4,0.4,12,0.8,12h14.4c0.4,0,0.8,0.4,0.8,0.8v2.4C16,15.6,15.6,16,15.2,16z
@@ -84,18 +79,18 @@
                                         <div class="product-card">
                                             <div class="product-card__image">
                                                 <div class="image image--type--product">
-                                                    <a href="product-full.html" class="image__body"><img class="image__tag" src="~/rusGold/images/products/product-1-245x245.jpg" alt="" /></a>
+                                                    <a href="/Produkt/@Url.FriendlyUrlHelper(item.Name).ToLower()/@item.Id" class="image__body"><img class="image__tag" src="~/rusGold/images/products/product-1-245x245.jpg" alt="" /></a>
                                                 </div>
                                             </div>
                                             <div class="product-card__info">
                                                 <div class="product-card__name">
                                                     <div>
                                                         @* <div class="product-card__badges">
-                                                            <div class="tag-badge tag-badge--sale">sale</div>
-                                                            <div class="tag-badge tag-badge--new">new</div>
-                                                            <div class="tag-badge tag-badge--hot">hot</div>
-                                                        </div> *@
-                                                        <a href="product-full.html">130,133 и подобные 14 ног 1 подложка</a>
+                                                    <div class="tag-badge tag-badge--sale">sale</div>
+                                                    <div class="tag-badge tag-badge--new">new</div>
+                                                    <div class="tag-badge tag-badge--hot">hot</div>
+                                                    </div> *@
+                                                        <a href="/Produkt/@Url.FriendlyUrlHelper(item.Name).ToLower()/@item.Id">@item.Name</a>
                                                     </div>
                                                 </div>
                                                 <div class="product-card__features">
@@ -110,7 +105,7 @@
                                             <div class="product-card__footer">
                                                 <div class="product-card__prices"><div class="product-card__price product-card__price--current">Цена за новые ₽19.00</div></div>
                                                 <div class="product-card__prices"><div class="product-card__price product-card__price--current">Цена за б/у ₽19.00</div></div>
-                                                <button class="product-card__addtocart-icon" type="button" aria-label="Контакты : 800 060-0730">
+                                                <a href="/Produkt/@Url.FriendlyUrlHelper(item.Name).ToLower()/@item.Id" class="product-card__addtocart-icon" type="button" aria-label="Контакты : 800 060-0730">
                                                     <svg width="20" height="20">
                                                         <circle cx="7" cy="17" r="2" />
                                                         <circle cx="15" cy="17" r="2" />
@@ -118,8 +113,7 @@
 	V1.4C0,1.2,0.2,1,0.4,1h2.5c1,0,1.8,0.6,2.1,1.6L5.1,3l2.3,6.8c0,0.1,0.2,0.2,0.3,0.2h8.6c0.1,0,0.3-0.1,0.3-0.2l1.3-4.4
 	C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z" />
                                                     </svg>
-                                                </button>
-                                                <button class="product-card__addtocart-full" type="button">Контакты : 800 060-0730</button>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -129,33 +123,76 @@
                         <div class="products-view__pagination">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">
-                                    <li class="page-item disabled">
-                                        <a class="page-link page-link--with-arrow" href="#" aria-label="Previous">
-                                            <span class="page-link__arrow page-link__arrow--left" aria-hidden="true">
-                                                <svg width="7" height="11">
-                                                    <path d="M6.7,0.3L6.7,0.3c-0.4-0.4-0.9-0.4-1.3,0L0,5.5l5.4,5.2c0.4,0.4,0.9,0.3,1.3,0l0,0c0.4-0.4,0.4-1,0-1.3l-4-3.9l4-3.9C7.1,1.2,7.1,0.6,6.7,0.3z" />
-                                                </svg>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item active" aria-current="page">
-                                        <span class="page-link">2 <span class="sr-only">(current)</span></span>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                    <li class="page-item page-item--dots"><div class="pagination__dots"></div></li>
-                                    <li class="page-item"><a class="page-link" href="#">9</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link page-link--with-arrow" href="#" aria-label="Next">
-                                            <span class="page-link__arrow page-link__arrow--right" aria-hidden="true">
-                                                <svg width="7" height="11">
-                                                    <path d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9
-	C-0.1,9.8-0.1,10.4,0.3,10.7z" />
-                                                </svg>
-                                            </span>
-                                        </a>
-                                    </li>
+                                    @{
+                                        if (Model.ShowPrevious)
+                                        {
+                                            if (Model.CategoryId != null)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link page-link--with-arrow" aria-label="Previous" asp-route-currentPage="@(Model.CurrentPage - 1)" asp-route-categoryId="@Model.CategoryId.Value" asp-route-isAscending="@Model.IsAscending" asp-route-pageSize="@Model.PageSize">
+                                                        <span class="page-link__arrow page-link__arrow--left" aria-hidden="true">
+                                                            <svg width="7" height="11">
+                                                                <path d="M6.7,0.3L6.7,0.3c-0.4-0.4-0.9-0.4-1.3,0L0,5.5l5.4,5.2c0.4,0.4,0.9,0.3,1.3,0l0,0c0.4-0.4,0.4-1,0-1.3l-4-3.9l4-3.9C7.1,1.2,7.1,0.6,6.7,0.3z" />
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link page-link--with-arrow" aria-label="Previous" asp-route-currentPage="@(Model.CurrentPage - 1)" asp-route-isAscending="@Model.IsAscending" asp-route-pageSize="@Model.PageSize">
+                                                        <span class="page-link__arrow page-link__arrow--left" aria-hidden="true">
+                                                            <svg width="7" height="11">
+                                                                <path d="M6.7,0.3L6.7,0.3c-0.4-0.4-0.9-0.4-1.3,0L0,5.5l5.4,5.2c0.4,0.4,0.9,0.3,1.3,0l0,0c0.4-0.4,0.4-1,0-1.3l-4-3.9l4-3.9C7.1,1.2,7.1,0.6,6.7,0.3z" />
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            }
+                                        }
+                                        for (int i = 1; i < Model.TotalPages; i++)
+                                        {
+                                            if (Model.CategoryId != null)
+                                            {
+                                                <li class="page-item @(i==Model.CurrentPage ? "active" : "")"><a class="page-link" asp-route-currentPage="@i" asp-route-categoryId="@Model.CategoryId.Value" asp-route-isAscending="@Model.IsAscending" asp-route-pageSize="@Model.PageSize">@i</a></li>
+                                            }
+                                            else
+                                            {
+                                                <li class="page-item @(i==Model.CurrentPage ? "active" : "")"><a class="page-link" asp-route-currentPage="@i" asp-route-isAscending="@Model.IsAscending" asp-route-pageSize="@Model.PageSize">@i</a></li>
+                                            }
+                                        }
+                                        if (Model.ShowNext)
+                                        {
+                                            if (Model.CategoryId != null)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link page-link--with-arrow" aria-label="Next" asp-route-currentPage="@(Model.CurrentPage + 1)" asp-route-categoryId="@Model.CategoryId.Value" asp-route-isAscending="@Model.IsAscending" asp-route-pageSize="@Model.PageSize">
+                                                        <span class="page-link__arrow page-link__arrow--right" aria-hidden="true">
+                                                            <svg width="7" height="11">
+                                                                <path d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9
+            C-0.1,9.8-0.1,10.4,0.3,10.7z" />
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link page-link--with-arrow" aria-label="Next" asp-route-currentPage="@(Model.CurrentPage + 1)" asp-route-isAscending="@Model.IsAscending" asp-route-pageSize="@Model.PageSize">
+                                                        <span class="page-link__arrow page-link__arrow--right" aria-hidden="true">
+                                                            <svg width="7" height="11">
+                                                                <path d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9
+                C-0.1,9.8-0.1,10.4,0.3,10.7z" />
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            }
+                                        }
+                                    }
+
                                 </ul>
                             </nav>
                             <div class="products-view__pagination-legend">Показано товаров</div>

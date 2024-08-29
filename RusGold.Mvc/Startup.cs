@@ -126,16 +126,11 @@ namespace RusGold.Mvc
                     defaults: new { controller = "Article", action = "Detail" }
                     );
                 endpoints.MapControllerRoute(
-                    name: "car",
-                    pattern: "modeller/{title}/{articleId}",
-                    defaults: new { controller = "Car", action = "Detail" }
+                    name: "product",
+                    pattern: "produkt/{title}/{productId}",
+                    defaults: new { controller = "Product", action = "Detail" }
                 );
-                endpoints.MapControllerRoute(
-                    name: "service",
-                    pattern: "xidmet/{name}/{serviceId}",
-                    defaults: new { controller = "Services", action = "Detail" }
-                    );
-                endpoints.MapDefaultControllerRoute();
+				endpoints.MapDefaultControllerRoute();
             });
         }
     }

@@ -7,5 +7,6 @@ namespace RusGold.Entities.DTOs
     public class ProductListDto:DtoGetBase
     {
         public IList<Product> Products { get; set; }
+        public int? CategoryId { get; set; }
     }
 }
