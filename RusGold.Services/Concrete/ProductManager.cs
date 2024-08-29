@@ -175,8 +175,8 @@ namespace RusGold.Services.Concrete
 				pageSize = pageSize > 20 ? 20 : pageSize;
 
 				var Products = categoryId.HasValue
-					? await _unitOfWork.Products.GetAllAsync(a => a.IsActive && !a.IsDeleted && a.CategoryId == categoryId,a=>a.Category,a => a.User)
-					: await _unitOfWork.Products.GetAllAsync(a => a.IsActive && !a.IsDeleted, a => a.Category, a => a.User);
+					? await _unitOfWork.Products.GetAllAsync(a => a.IsActive && !a.IsDeleted && a.CategoryId == categoryId,a=>a.Category)
+					: await _unitOfWork.Products.GetAllAsync(a => a.IsActive && !a.IsDeleted, a => a.Category);
 
 				Products = isAscending
 					? Products.OrderBy(a => a.Id).ToList()

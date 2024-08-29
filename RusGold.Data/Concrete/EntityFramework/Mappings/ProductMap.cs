@@ -29,11 +29,11 @@ namespace RusGold.Data.Concrete.EntityFramework.Mappings
                 .IsRequired()
                 .HasMaxLength(300);
 
-            builder.Property(c => c.UserId)
-                .IsRequired();
+            //builder.Property(c => c.UserId)
+            //    .IsRequired();
 
-            builder.Property(c => c.CategoryId)
-                .IsRequired();
+            //builder.Property(c => c.CategoryId)
+            //    .IsRequired();
 
             builder.Property(c => c.UnitId)
                 .IsRequired();
@@ -58,8 +58,9 @@ namespace RusGold.Data.Concrete.EntityFramework.Mappings
                 .IsRequired()
                 .HasMaxLength(50);
 
-			builder.HasOne<Category>(u => u.Category).WithMany(u => u.Products).HasForeignKey(
-			   u => u.UserId);
+
+			builder.HasOne<Category>(a => a.Category).WithMany(c => c.Products).HasForeignKey(
+				a => a.CategoryId);
 
 			builder.ToTable("Products");
 
