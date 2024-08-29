@@ -58,7 +58,10 @@ namespace RusGold.Data.Concrete.EntityFramework.Mappings
                 .IsRequired()
                 .HasMaxLength(50);
 
-            builder.ToTable("Products");
+			builder.HasOne<Category>(u => u.Category).WithMany(u => u.Products).HasForeignKey(
+			   u => u.UserId);
+
+			builder.ToTable("Products");
 
         }
     }

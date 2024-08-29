@@ -53,57 +53,15 @@
 										attribute, in which case the width and height will be obtained from the naturalWidth
 										and naturalHeight property of img.image__tag.
 										-->
-										<a class="image image--type--product" href="~/rusGold/images/products/product-2-700x700.jpg" target="_blank" data-width="700" data-height="700">
-											<div class="image__body"><img class="image__tag" src="~/rusGold/images/products/product-2-500x500.jpg" alt="" /></div>
-										</a>
-										<!--
-										The data-width and data-height attributes must contain the size of a larger version
-										of the product image.
-
-										If you do not know the image size, you can remove the data-width and data-height
-										attribute, in which case the width and height will be obtained from the naturalWidth
-										and naturalHeight property of img.image__tag.
-										-->
-										<a class="image image--type--product" href="~/rusGold/images/products/product-1-700x700.jpg" target="_blank" data-width="700" data-height="700">
-											<div class="image__body"><img class="image__tag" src="~/rusGold/images/products/product-1-500x500.jpg" alt="" /></div>
-										</a>
-										<!--
-										The data-width and data-height attributes must contain the size of a larger version
-										of the product image.
-
-										If you do not know the image size, you can remove the data-width and data-height
-										attribute, in which case the width and height will be obtained from the naturalWidth
-										and naturalHeight property of img.image__tag.
-										-->
-										<a class="image image--type--product" href="~/rusGold/images/products/product-3-700x700.jpg" target="_blank" data-width="700" data-height="700">
-											<div class="image__body"><img class="image__tag" src="~/rusGold/images/products/product-3-500x500.jpg" alt="" /></div>
-										</a>
-										<!--
-										The data-width and data-height attributes must contain the size of a larger version
-										of the product image.
-
-										If you do not know the image size, you can remove the data-width and data-height
-										attribute, in which case the width and height will be obtained from the naturalWidth
-										and naturalHeight property of img.image__tag.
-										-->
-										<a class="image image--type--product" href="~/rusGold/images/products/product-4-700x700.jpg" target="_blank" data-width="700" data-height="700">
-											<div class="image__body"><img class="image__tag" src="~/rusGold/images/products/product-4-500x500.jpg" alt="" /></div>
+										<a class="image image--type--product" href="~/img/22_01_2019_1548147711_53.jpg" target="_blank" data-width="700" data-height="700">
+											<div class="image__body"><img class="image__tag" src="~/img/22_01_2019_1548147711_53.jpg" alt="" /></div>
 										</a>
 									</div>
 								</div>
 								<div class="product-gallery__thumbnails">
 									<div class="owl-carousel">
 										<div class="product-gallery__thumbnails-item image image--type--product">
-											<div class="image__body"><img class="image__tag" src="~/rusGold/images/products/product-2-70x70.jpg" alt="" /></div>
-										</div>
-										<div class="product-gallery__thumbnails-item image image--type--product">
-											<div class="image__body"><img class="image__tag" src="~/rusGold/images/products/product-1-70x70.jpg" alt="" /></div>
-										</div>
-										<div class="product-gallery__thumbnails-item image image--type--product">
-											<div class="image__body"><img class="image__tag" src="~/rusGold/images/products/product-3-70x70.jpg" alt="" /></div>
-										</div>
-										<div class="product-gallery__thumbnails-item image image--type--product">
-											<div class="image__body"><img class="image__tag" src="~/rusGold/images/products/product-4-70x70.jpg" alt="" /></div>
+											<div class="image__body"><img class="image__tag" src="~/img/22_01_2019_1548147711_53.jpg" alt="" /></div>
 										</div>
 									</div>
 								</div>
@@ -122,7 +80,7 @@
 							</div>
 							<div class="product__main">
 								<div class="product__excerpt">
-									Many philosophical debates that began in ancient times are still debated today. In one general sense, philosophy is associated with wisdom, intellectual culture and a search for knowledge.
+									@Html.Raw(Model.Product.Content) 
 								</div>
 								<div class="product__features">
 									<div class="product__features-title">Основные характеристики:</div>

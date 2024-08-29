@@ -1,0 +1,14 @@
+﻿@model RusGold.Entities.DTOs.CategoryListDto
+
+<div class="filter-categories">
+    <ul class="filter-categories__list">
+        @foreach (var item in Model.Categories)
+        {
+            <li class="filter-categories__item filter-categories__item--parent">
+                <a asp-action="Index" asp-controller="Product" asp-route-categoryId="@item.Id">@item.Name</a>
+            </li>
+        }
+
+    </ul>
+</div>
+

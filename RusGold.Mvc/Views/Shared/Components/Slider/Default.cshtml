@@ -1,5 +1,5 @@
 ﻿@model RusGold.Entities.DTOs.SliderListDto
-
+<div class="block-space block-space--layout--divider-xs"></div>
 <div class="block block-slideshow">
     <div class="container">
         <div class="block-slideshow__carousel">
@@ -7,11 +7,11 @@
                 @foreach (var item in Model.Sliders)
                 {
                     <a class="block-slideshow__item" href="#">
-                        <span class="block-slideshow__item-image block-slideshow__item-image--desktop" style="background-image: url('~/img/News-media-53243135562.webp');"></span>
-                        <span class="block-slideshow__item-image block-slideshow__item-image--mobile" style="background-image: url('~/img/@item.ImageUrl');"></span>
-                        <span class="block-slideshow__item-offer">СКУПКА </span>
-                        <span class="block-slideshow__item-title">
-                            РАДИОДЕТАЛИ, электротовары <br />электронные компоненты
+                        <span class="block-slideshow__item-image block-slideshow__item-image--desktop" style="background-image: url('/img/@item.ImageUrl');"></span>
+                        <span class="block-slideshow__item-image block-slideshow__item-image--mobile" style="background-image: url('/img/@item.ImageUrl');"></span>
+                        <span class="block-slideshow__item-offer">@item.Name</span>
+                        <span class="block-slideshow__item-title" style="color:white;">
+                            @item.CreatedByName
                            
                         </span>
                         <span class="block-slideshow__item-button">Контакт

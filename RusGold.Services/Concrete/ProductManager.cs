@@ -117,7 +117,7 @@ namespace RusGold.Services.Concrete
 		}
 		public async Task<IDataResult<ProductDto>> Get(int CarId)
 		{
-			var Car = await _unitOfWork.Products.GetAsync(c => c.Id == CarId);
+			var Car = await _unitOfWork.Products.GetAsync(c => c.Id == CarId, a => a.Category);
 			if (Car != null)
 			{
 				return new DataResult<ProductDto>(ResultStatus.Succes, new ProductDto
@@ -157,7 +157,7 @@ namespace RusGold.Services.Concrete
 		}
 		public async Task<IDataResult<ProductListDto>> GetAllByNonDeleteAndActive()
 		{
-			var Car = await _unitOfWork.Products.GetAllAsync(c => c.IsActive && !c.IsDeleted);
+			var Car = await _unitOfWork.Products.GetAllAsync(c => c.IsActive && !c.IsDeleted, a => a.Category);
 			if (Car.Count > -1)
 			{
 				return new DataResult<ProductListDto>(ResultStatus.Succes, new ProductListDto
@@ -175,8 +175,8 @@ namespace RusGold.Services.Concrete
 				pageSize = pageSize > 20 ? 20 : pageSize;
 
 				var Products = categoryId.HasValue
-					? await _unitOfWork.Products.GetAllAsync(a => a.IsActive && !a.IsDeleted && a.CategoryId == categoryId, a => a.User)
-					: await _unitOfWork.Products.GetAllAsync(a => a.IsActive && !a.IsDeleted, a => a.User);
+					? await _unitOfWork.Products.GetAllAsync(a => a.IsActive && !a.IsDeleted && a.CategoryId == categoryId,a=>a.Category,a => a.User)
+					: await _unitOfWork.Products.GetAllAsync(a => a.IsActive && !a.IsDeleted, a => a.Category, a => a.User);
 
 				Products = isAscending
 					? Products.OrderBy(a => a.Id).ToList()
