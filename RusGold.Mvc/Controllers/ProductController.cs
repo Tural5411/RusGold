@@ -28,7 +28,26 @@ namespace RusGold.Mvc.Controllers
         public async Task<IActionResult> Index(int? categoryId,int currentPage = 1, int pageSize = 1, bool isAscending = false)
         {
             var articleResult = await _productService.GetAllByPaging(categoryId, currentPage, pageSize, isAscending);
+
+            if (categoryId != null)
+            {
+                var category = _categoryService.Get(categoryId.Value).Result.Data;
+                ViewBag.categoryName = category.Category.Name;
+            }
+           
             return View(articleResult.Data);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Search(string keyword, int currentPage = 1, int pageSize = 4, bool isAscending = false)
+        {
+            var searchResult = await _productService.SearchAsync(keyword, currentPage, pageSize, isAscending);
+            if (searchResult.ResultStatus == ResultStatus.Succes)
+            {
+                return View(searchResult);
+            }
+            return NotFound();
         }
 
         [HttpGet]

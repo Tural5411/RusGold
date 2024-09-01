@@ -20,16 +20,16 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
     public class ProductController : BaseController
     {
         private readonly IProductService _carService;
-        private readonly ICategoryService _carbrendModelService;
+        private readonly ICategoryService _category;
         private readonly IToastNotification _toastNotification;
         private readonly IPhotoService _photoService;
 
-        public ProductController(ICategoryService carbrendModelService, IPhotoService photoService, IProductService carService, IToastNotification toastNotification, UserManager<User> userManager, IMapper mapper, IImageHelper imageHelper) : base(userManager, mapper, imageHelper)
+        public ProductController(ICategoryService category, IPhotoService photoService, IProductService carService, IToastNotification toastNotification, UserManager<User> userManager, IMapper mapper, IImageHelper imageHelper) : base(userManager, mapper, imageHelper)
         {
             _carService = carService;
             _toastNotification = toastNotification;
             _photoService = photoService;
-            _carbrendModelService = carbrendModelService;
+            _category = category;
         }
 
         public async Task<IActionResult> Index()

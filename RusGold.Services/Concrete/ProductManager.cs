@@ -10,6 +10,7 @@ using RusGold.Services.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -168,6 +169,43 @@ namespace RusGold.Services.Concrete
 			}
 			return new DataResult<ProductListDto>(ResultStatus.Error, Messages.Car.NotFound(isPlural: true), null);
 		}
+
+        public async Task<IDataResult<ProductListDto>> SearchAsync(string keyword, int currentPage = 1, int pageSize = 4, bool isAscending = false)
+        {
+            pageSize = pageSize > 20 ? 20 : pageSize;
+            if (string.IsNullOrWhiteSpace(keyword))
+            {
+                var products = await _unitOfWork.Products.GetAllAsync(p => p.IsActive && !p.IsDeleted, p => p.User);
+                var sortedProducts = isAscending
+                    ? products.OrderBy(p => p.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList()
+                    : products.OrderByDescending(p => p.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+                return new DataResult<ProductListDto>(ResultStatus.Succes, new ProductListDto
+                {
+                    Products = sortedProducts,
+                    CurrentPage = currentPage,
+                    PageSize = pageSize,
+                    ResultStatus = ResultStatus.Succes,
+                    IsAscending = isAscending
+                });
+            }
+            var searchedProducts = await _unitOfWork.Products.SearchAsync(
+                new List<Expression<Func<Product, bool>>>
+                {
+                    (p) => p.Name.Contains(keyword),
+                }, p => p.User);
+            var searchedAndSortedProducts = isAscending
+                ? searchedProducts.OrderBy(p => p.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList()
+                : searchedProducts.OrderByDescending(p => p.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+            return new DataResult<ProductListDto>(ResultStatus.Succes, new ProductListDto
+            {
+                Products = searchedAndSortedProducts,
+                CurrentPage = currentPage,
+                PageSize = pageSize,
+                ResultStatus = ResultStatus.Succes,
+                IsAscending = isAscending
+            });
+        }
+
 		public async Task<IDataResult<ProductListDto>> GetAllByPaging(int? categoryId, int currentPage = 1,int pageSize = 4, bool isAscending = false)
 		{
 			try

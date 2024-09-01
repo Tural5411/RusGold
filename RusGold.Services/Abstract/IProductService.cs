@@ -16,6 +16,8 @@ namespace RusGold.Services.Abstract
         Task<IDataResult<ProductListDto>> GetAllByNonDeleteAndActive();
         Task<IDataResult<ProductListDto>> GetAllByPaging(int? categoryId,
          int currentPage = 1, int pageSize = 4, bool isAscending = false);
+        Task<IDataResult<ProductListDto>> SearchAsync(string keyword, int currentPage = 1,
+            int pageSize = 4, bool isAscending = false);
         Task<IDataResult<ProductDto>> Add(ProductAddDto CarAddDto, string createdByName);
         Task<IDataResult<ProductDto>> Update(ProductUpdateDto CarUpdateDto, string modifiedByName);
         Task<IResult> Delete(int CarId, string modifiedByName);

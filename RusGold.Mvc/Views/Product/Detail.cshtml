@@ -4,7 +4,8 @@
 @{
 	Layout = "_Layout";
 	ViewBag.Title = Model.Product.Name;
-	ViewBag.Description = Model.Product.Content;
+	ViewBag.Tags = Url.FriendlyUrlHelper(Model.Product.Name).ToLower();
+    ViewBag.Description = Model.Product.Content;
 	ViewBag.Author = "RadioDetal";
 	ViewBag.image = Model.Product.ThumbNail;
 	string link = $"/Produkt/{Url.FriendlyUrlHelper(Model.Product.Name).ToLower().ToString()}/{Model.Product.Id}";
