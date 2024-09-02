@@ -175,7 +175,7 @@ namespace RusGold.Services.Concrete
             pageSize = pageSize > 20 ? 20 : pageSize;
             if (string.IsNullOrWhiteSpace(keyword))
             {
-                var products = await _unitOfWork.Products.GetAllAsync(p => p.IsActive && !p.IsDeleted, p => p.User);
+                var products = await _unitOfWork.Products.GetAllAsync(p => p.IsActive && !p.IsDeleted, p => p.User, p => p.Category);
                 var sortedProducts = isAscending
                     ? products.OrderBy(p => p.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList()
                     : products.OrderByDescending(p => p.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
@@ -192,7 +192,7 @@ namespace RusGold.Services.Concrete
                 new List<Expression<Func<Product, bool>>>
                 {
                     (p) => p.Name.Contains(keyword),
-                }, p => p.User);
+                }, p => p.User, p => p.Category);
             var searchedAndSortedProducts = isAscending
                 ? searchedProducts.OrderBy(p => p.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList()
                 : searchedProducts.OrderByDescending(p => p.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();

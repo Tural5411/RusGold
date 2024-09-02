@@ -21,7 +21,7 @@
                                 <li class="departments__list-padding" role="presentation"></li>
                                 @foreach (var item in Model.Categories)
                                 {
-                                    <li class="departments__item"><a href="#" class="departments__item-link">@item.Name</a></li>
+                                    <li class="departments__item"><a asp-action="Index" asp-controller="Product" asp-route-categoryId="@item.Id" class="departments__item-link">@item.Name</a></li>
                                 }
                                 <li class="departments__list-padding" role="presentation"></li>
                             </ul>
@@ -119,9 +119,9 @@
         </div>
         <div class="header__search">
             <div class="search">
-                <form action="#" class="search__body">
+                <form asp-action="Search" asp-controller="Product" method="get" class="search__body">
                     <div class="search__shadow"></div>
-                    <input class="search__input" type="text" placeholder="Найти" />
+                    <input class="search__input" name="keyword" type="text" placeholder="Найти" />
                     <button class="search__button search__button--start" type="button">
                         <span class="search__button-icon">
                             <img width="20px" height="20px" src="~/img/detailogo.png" alt="radiodetal"/>

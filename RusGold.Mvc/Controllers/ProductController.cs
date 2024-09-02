@@ -45,7 +45,8 @@ namespace RusGold.Mvc.Controllers
             var searchResult = await _productService.SearchAsync(keyword, currentPage, pageSize, isAscending);
             if (searchResult.ResultStatus == ResultStatus.Succes)
             {
-                return View(searchResult);
+                ViewBag.keyword = keyword;
+                return View(searchResult.Data);
             }
             return NotFound();
         }
