@@ -17,19 +17,25 @@
 
             <div class="form-group">
                 <label for="brendList" asp-for="CategoryId"></label>
-                @*<select asp-for="BrendId" asp-items="@(new SelectList(Model.CarBrends ?? new List<CarBrendModel>(), "Id", "Name"))"
-                            id="brendList" class="form-control">
-                        <option></option>
-                    </select>*@
+                <select asp-for="CategoryId" id="brendList" class="form-control">
+                    <option value="">Seçin</option>
+                    @foreach (var category in ViewBag.categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
                 <span class="text-danger" asp-validation-for="CategoryId"></span>
             </div>
 
+
             <div class="form-group">
                 <label for="brendList" asp-for="UnitId"></label>
-                @*<select asp-for="BrendId" asp-items="@(new SelectList(Model.CarBrends ?? new List<CarBrendModel>(), "Id", "Name"))"
-                            id="brendList" class="form-control">
-                        <option></option>
-                    </select>*@
+                <select asp-for="UnitId"
+                        class="form-control">
+                    <option></option>
+                    <option value="1">EDED</option>
+                    <option value="2">KG</option>
+                </select>
                 <span class="text-danger" asp-validation-for="UnitId"></span>
             </div>
 
@@ -46,7 +52,7 @@
                 <input class="form-control" asp-for="Price" />
                 <span class="text-danger" asp-validation-for="Price"></span>
             </div>
-            
+
             <div class="form-group">
                 <label asp-for="PriceByCard" class="control-label"></label>
                 <input class="form-control" asp-for="PriceByCard" />
@@ -63,9 +69,9 @@
                 <span class="text-danger" asp-validation-for="Content"></span>
             </div>
 
-            <div class="form-group">
+            @* <div class="form-group">
                 <label asp-for="SeoDescription" class="control-label"></label>
-                <input class="form-control" asp-for="SeoDescription" />
+                <input class="form-control" asp-for="SeoDescription" va />
                 <span class="text-danger" asp-validation-for="SeoDescription"></span>
             </div>
 
@@ -73,7 +79,7 @@
                 <label asp-for="SeoTags" class="control-label"></label>
                 <input class="form-control" asp-for="SeoTags" />
                 <span class="text-danger" asp-validation-for="SeoTags"></span>
-            </div>
+            </div> *@
         </div>
     </div>
 
@@ -103,7 +109,7 @@
     </div>
 
     <div class="form-group text-center">
-        <a href="/Admin/Car" class="btn btn-danger btn-block">
+        <a href="/Admin/Product" class="btn btn-danger btn-block">
             <span class="fas fa-times"></span> Ləğv et
         </a>
         <button type="submit" class="btn btn-primary btn-block">

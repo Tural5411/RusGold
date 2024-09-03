@@ -92,7 +92,9 @@
                                     <div class="tag-badge tag-badge--new">new</div>
                                     <div class="tag-badge tag-badge--hot">hot</div>
                                     </div> *@
-                                                            <a href="/Produkt/@Url.FriendlyUrlHelper(item.Name).ToLower()/@item.Id">@item.Name</a>
+                                                            <a style="color: #007bff;
+    font-weight: 500;
+    font-size: large;" href="/Produkt/@Url.FriendlyUrlHelper(item.Name).ToLower()/@item.Id">@item.Name</a>
                                                         </div>
                                                     </div>
                                                     <div class="product-card__features">
@@ -100,7 +102,16 @@
                                                             <li>
                                                                 Каталог: @item.Category.Name
                                                             </li>
-                                                            <li>Единица: @(item.UnitId)</li>
+                                                            <li>
+                                                                Единица: @if (item.UnitId == 1)
+                                                                {
+                                                                    @:шт
+                                                                }
+                                                                else if (item.UnitId == 2)
+                                                                {
+                                                                    @:кг
+                                                                }
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>

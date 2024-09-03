@@ -20,16 +20,16 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
     public class ProductController : BaseController
     {
         private readonly IProductService _carService;
-        private readonly ICategoryService _category;
+        private readonly ICategoryService _categoryService;
         private readonly IToastNotification _toastNotification;
         private readonly IPhotoService _photoService;
 
-        public ProductController(ICategoryService category, IPhotoService photoService, IProductService carService, IToastNotification toastNotification, UserManager<User> userManager, IMapper mapper, IImageHelper imageHelper) : base(userManager, mapper, imageHelper)
+        public ProductController(ICategoryService categoryService, IPhotoService photoService, IProductService carService, IToastNotification toastNotification, UserManager<User> userManager, IMapper mapper, IImageHelper imageHelper) : base(userManager, mapper, imageHelper)
         {
             _carService = carService;
             _toastNotification = toastNotification;
             _photoService = photoService;
-            _category = category;
+            _categoryService = categoryService;
         }
 
         public async Task<IActionResult> Index()
@@ -40,6 +40,8 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            var categories = _categoryService.GetAllByNonDeletedAndActive();
+            ViewBag.categories = categories.Result.Data.Categories.Where(x => x.ParentId == null);
             return View();
         }
         [HttpPost]
@@ -81,11 +83,15 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
                     ModelState.AddModelError("", result.Message);
                 }
             }
+            var categories = _categoryService.GetAllByNonDeletedAndActive();
+            ViewBag.categories = categories.Result.Data.Categories.Where(x => x.ParentId == null);
             return View(ProductViewModel);
         }
         [HttpGet]
         public async Task<IActionResult> Update(int carId)
         {
+            var categories = _categoryService.GetAllByNonDeletedAndActive();
+            ViewBag.categories = categories.Result.Data.Categories.Where(x => x.ParentId == null);
             var result = await _carService.GetUpdateDto(carId);
             var images = await _photoService.GetAllByNonDeletedAndActive(carId);
             if (result.ResultStatus == ResultStatus.Succes)
@@ -153,6 +159,8 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
                     ModelState.AddModelError("", result.Message);
                 }
             }
+            var categories = _categoryService.GetAllByNonDeletedAndActive();
+            ViewBag.categories = categories.Result.Data.Categories.Where(x => x.ParentId == null);
             return View(teamUpdateViewModel);
         }
         [HttpPost]

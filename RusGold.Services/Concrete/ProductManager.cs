@@ -30,7 +30,7 @@ namespace RusGold.Services.Concrete
 			var Car = _mapper.Map<Product>(CarAddDto);
 			Car.CreatedByName = "RusGold";
 			Car.ModifiedByName = "RusGold";
-			Car.CreatedDate = DateTime.Now;
+            Car.CreatedDate = DateTime.Now;
 			Car.ModifiedDate = DateTime.Now;
 			var addedCar = await _unitOfWork.Products.AddAsync(Car);
 			await _unitOfWork.SaveAsync();
