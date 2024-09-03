@@ -1,8 +1,8 @@
 ﻿@model RusGold.Entities.DTOs.CategoryListDto
-@foreach (var item in Model.Categories)
+@* @foreach (var item in Model.Categories)
 {
     <li class="departments__item"><a asp-action="Index" asp-controller="Product" asp-route-categoryId="@item.Id" class="departments__item-link">@item.Name</a></li>
-}
+} *@
 <div class="mobile-menu">
     <div class="mobile-menu__backdrop"></div>
     <div class="mobile-menu__body">
