@@ -25,7 +25,7 @@ namespace RusGold.Mvc.Controllers
         }
         [Route("Produkt")]
         [HttpGet]
-        public async Task<IActionResult> Index(int? categoryId,int currentPage = 1, int pageSize = 1, bool isAscending = false)
+        public async Task<IActionResult> Index(int? categoryId,int currentPage = 1, int pageSize = 9, bool isAscending = false)
         {
             var articleResult = await _productService.GetAllByPaging(categoryId, currentPage, pageSize, isAscending);
 

@@ -13,6 +13,7 @@ using NToastNotify;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace RusGold.Mvc.Areas.Admin.Controllers
 {
@@ -88,22 +89,22 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
             return View(ProductViewModel);
         }
         [HttpGet]
-        public async Task<IActionResult> Update(int carId)
+        public async Task<IActionResult> Update(int productId)
         {
             var categories = _categoryService.GetAllByNonDeletedAndActive();
             ViewBag.categories = categories.Result.Data.Categories.Where(x => x.ParentId == null);
-            var result = await _carService.GetUpdateDto(carId);
-            var images = await _photoService.GetAllByNonDeletedAndActive(carId);
+            var result = await _carService.GetUpdateDto(productId);
+            var images = await _photoService.GetAllByNonDeletedAndActive(productId);
             if (result.ResultStatus == ResultStatus.Succes)
             {
-                var teamUpdateViewModel = Mapper.Map<CarUpdateViewModel>(result.Data);
+                var teamUpdateViewModel = Mapper.Map<ProductUpdateViewModel>(result.Data);
                 teamUpdateViewModel.Images = images.Data.Photos;
                 return View(teamUpdateViewModel);
             }
             return NotFound();
         }
         [HttpPost]
-        public async Task<IActionResult> Update(CarUpdateViewModel teamUpdateViewModel)
+        public async Task<IActionResult> Update(ProductUpdateViewModel teamUpdateViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -113,13 +114,8 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
                 {
                     var uploadedImageResult = await ImageHelper.UploadImage(teamUpdateViewModel.Name,
                         teamUpdateViewModel.PictureFile, PictureType.Post);
-                    teamUpdateViewModel.Thumbnail = uploadedImageResult.ResultStatus
-                        == ResultStatus.Succes ? uploadedImageResult.Data.FullName
-                        : "postImages/defaultThumbnail.jpg";
-                    if (oldThumbnail != "postImages/defaultThumbnail.jpg")
-                    {
-                        isNewThumbnailUploaded = true;
-                    }
+                    teamUpdateViewModel.Thumbnail = uploadedImageResult.Data.FullName;
+                  
                 }
                 var teamUpdateDto = Mapper.Map<ProductUpdateDto>(teamUpdateViewModel);
                 var result = await (_carService).Update(teamUpdateDto, LoggedInUser.UserName);
