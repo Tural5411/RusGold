@@ -92,7 +92,9 @@
                                     <div class="tag-badge tag-badge--new">new</div>
                                     <div class="tag-badge tag-badge--hot">hot</div>
                                     </div> *@
-                                                            <a href="/Produkt/@Url.FriendlyUrlHelper(item.Name).ToLower()/@item.Id">@item.Name</a>
+                                                            <a style="color: #007bff;
+    font-weight: 500;
+    font-size: large;" href="/Produkt/@Url.FriendlyUrlHelper(item.Name).ToLower()/@item.Id">@item.Name</a>
                                                         </div>
                                                     </div>
                                                     <div class="product-card__features">
@@ -100,7 +102,16 @@
                                                             <li>
                                                                 Каталог: @item.Category.Name
                                                             </li>
-                                                            <li>Единица: @(item.UnitId)</li>
+                                                            <li>
+                                                                Единица: @if (item.UnitId == 1)
+                                                                {
+                                                                    @:шт
+                                                                }
+                                                                else if (item.UnitId == 2)
+                                                                {
+                                                                    @:кг
+                                                                }
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -111,7 +122,7 @@
                                                     <div class="product-card__prices">
                                                         <div class="product-card__price product-card__price--current">Цена за б/у ₽@item.PriceByCard</div>
                                                     </div>
-                                                    <a href="/Produkt/@Url.FriendlyUrlHelper(item.Name).ToLower()/@item.Id" class="product-card__addtocart-icon" type="button" aria-label="Контакты : 800 060-0730">
+                                                    <a href="/Produkt/@Url.FriendlyUrlHelper(item.Name).ToLower()/@item.Id" class="product-card__addtocart-icon" type="button" aria-label="Контакты : +7 909 168 88 49/+7 950 118-73-74">
                                                         <svg width="20" height="20">
                                                             <circle cx="7" cy="17" r="2" />
                                                             <circle cx="15" cy="17" r="2" />

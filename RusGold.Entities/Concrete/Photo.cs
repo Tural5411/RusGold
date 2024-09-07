@@ -11,7 +11,6 @@ namespace RusGold.Entities.Concrete
     public class CarPhotos : EntityBase, IEntity
     {
         public string ImageUrl { get; set; }
-        public int ProductId { get; set; }
-        public virtual Product Product { get; set; }
+        public int CarId { get; set; }
     }
 }

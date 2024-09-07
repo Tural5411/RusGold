@@ -17,7 +17,7 @@ namespace RusGold.Mvc.AutoMapper.Profiles
             CreateMap<SliderAddViewModel, SliderAddDto>();
             CreateMap<ProductViewModel, ProductAddDto>();
             CreateMap<ProductAddDto, ProductViewModel>();
-            CreateMap<ProductUpdateDto, CarUpdateViewModel>().ReverseMap();
+            CreateMap<ProductUpdateDto, ProductUpdateViewModel>().ReverseMap();
             CreateMap<CategoryUpdateDto, CategoryUpdateViewModel>().ReverseMap();
             CreateMap<Category, CategoryUpdateViewModel>().ReverseMap();
             CreateMap<SliderUpdateDto, SliderUpdateViewModel>().ReverseMap();

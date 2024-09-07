@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RusGold.Mvc.Areas.Admin.Models
 {
-    public class CarUpdateViewModel
+    public class ProductUpdateViewModel
     {
         [Required]
         public int Id { get; set; }
@@ -30,7 +30,7 @@ namespace RusGold.Mvc.Areas.Admin.Models
         public bool? IsGold { get; set; }
 
         [Display(Name = "Şəkil")]
-        public string ThumbNail { get; set; }
+        public string Thumbnail { get; set; }
 
         [Display(Name = "SEO Təsviri")]
         public string SeoDescription { get; set; }
@@ -48,10 +48,8 @@ namespace RusGold.Mvc.Areas.Admin.Models
         public int UserId { get; set; }
 
         [DisplayName("Şəkil")]
-        [Required(ErrorMessage = "Zəhmət olmasa {0} seçin")]
         [DataType(DataType.Upload)]
         public IFormFile PictureFile { get; set; }
-        public string Thumbnail { get; set; }
         [DisplayName("Aktivdir ?")]
         [Required(ErrorMessage = "{0}  boş ola bilməz!")]
         public bool IsActive { get; set; }

@@ -17,38 +17,38 @@
 
             <div class="form-group">
                 <label for="brendList" asp-for="CategoryId"></label>
-                @*<select asp-for="BrendId" asp-items="@(new SelectList(Model.CarBrends ?? new List<CarBrendModel>(), "Id", "Name"))"
-                            id="brendList" class="form-control">
-                        <option></option>
-                    </select>*@
+                <select asp-for="CategoryId" id="brendList" class="form-control">
+                    <option value="">Seçin</option>
+                    @foreach (var category in ViewBag.categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
                 <span class="text-danger" asp-validation-for="CategoryId"></span>
             </div>
 
+
             <div class="form-group">
                 <label for="brendList" asp-for="UnitId"></label>
-                @*<select asp-for="BrendId" asp-items="@(new SelectList(Model.CarBrends ?? new List<CarBrendModel>(), "Id", "Name"))"
-                            id="brendList" class="form-control">
-                        <option></option>
-                    </select>*@
+                <select asp-for="UnitId"
+                        class="form-control">
+                    <option></option>
+                    <option value="1">EDED</option>
+                    <option value="2">KG</option>
+                </select>
                 <span class="text-danger" asp-validation-for="UnitId"></span>
             </div>
 
-            <div class="form-group">
-                <label for="categoryList" asp-for="IsGold"></label>
-                <select asp-for="IsGold" id="modelList" class="form-control">
-                    <option></option>
-                </select>
-                <span class="text-danger" asp-validation-for="IsGold"></span>
-            </div>
+       
 
             <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
+                <label asp-for="Price" class="control-label">Yeni qiymet</label>
                 <input class="form-control" asp-for="Price" />
                 <span class="text-danger" asp-validation-for="Price"></span>
             </div>
-            
+
             <div class="form-group">
-                <label asp-for="PriceByCard" class="control-label"></label>
+                <label asp-for="PriceByCard" class="control-label">Kohne qiymet</label>
                 <input class="form-control" asp-for="PriceByCard" />
                 <span class="text-danger" asp-validation-for="PriceByCard"></span>
             </div>
@@ -58,14 +58,14 @@
         <!-- Right Column -->
         <div class="col-md-6">
             <div class="form-group">
-                <label asp-for="Content" class="control-label"></label>
+                <label asp-for="Content" class="control-label">Mehsul haqqinda mezmun</label>
                 <textarea class="form-control" asp-for="Content"></textarea>
                 <span class="text-danger" asp-validation-for="Content"></span>
             </div>
 
-            <div class="form-group">
+            @* <div class="form-group">
                 <label asp-for="SeoDescription" class="control-label"></label>
-                <input class="form-control" asp-for="SeoDescription" />
+                <input class="form-control" asp-for="SeoDescription" va />
                 <span class="text-danger" asp-validation-for="SeoDescription"></span>
             </div>
 
@@ -73,7 +73,7 @@
                 <label asp-for="SeoTags" class="control-label"></label>
                 <input class="form-control" asp-for="SeoTags" />
                 <span class="text-danger" asp-validation-for="SeoTags"></span>
-            </div>
+            </div> *@
         </div>
     </div>
 
@@ -86,13 +86,13 @@
                 <span class="text-danger" asp-validation-for="PictureFile"></span>
             </div>
         </div>
-        <div class="col-md-12">
+      @*   <div class="col-md-12">
             <div class="form-group">
                 <label for="thumbnailUpload" asp-for="CarPhotos">Məhsulun ətraflı şəkilləri</label>
                 <input type="file" accept="image/*" multiple id="thumbnailUpload" class="form-control-file" asp-for="CarPhotos" placeholder="Zəhmət Olmasa Şəkil seçin" />
                 <span class="text-danger" asp-validation-for="CarPhotos"></span>
             </div>
-        </div>
+        </div> *@
     </div>
 
 
@@ -103,7 +103,7 @@
     </div>
 
     <div class="form-group text-center">
-        <a href="/Admin/Car" class="btn btn-danger btn-block">
+        <a href="/Admin/Product" class="btn btn-danger btn-block">
             <span class="fas fa-times"></span> Ləğv et
         </a>
         <button type="submit" class="btn btn-primary btn-block">
