@@ -81,7 +81,7 @@
                                             <div class="product-card">
                                                 <div class="product-card__image">
                                                     <div class="image image--type--product">
-                                                        <a href="/Produkt/@Url.FriendlyUrlHelper(item.Name).ToLower()/@item.Id" class="image__body"><img class="image__tag" src="~/img/22_01_2019_1548147711_53.jpg" alt="@item.Name" /></a>
+                                                        <a href="/Produkt/@Url.FriendlyUrlHelper(item.Name).ToLower()/@item.Id" class="image__body"><img class="image__tag" src="~/img/@item.ThumbNail" alt="@item.Name" /></a>
                                                     </div>
                                                 </div>
                                                 <div class="product-card__info">
@@ -106,10 +106,10 @@
                                                 </div>
                                                 <div class="product-card__footer">
                                                     <div class="product-card__prices">
-                                                        <div class="product-card__price product-card__price--current">Цена за новые ₽19.00</div>
+                                                        <div class="product-card__price product-card__price--current">Цена за новые ₽@item.Price</div>
                                                     </div>
                                                     <div class="product-card__prices">
-                                                        <div class="product-card__price product-card__price--current">Цена за б/у ₽19.00</div>
+                                                        <div class="product-card__price product-card__price--current">Цена за б/у ₽@item.PriceByCard</div>
                                                     </div>
                                                     <a href="/Produkt/@Url.FriendlyUrlHelper(item.Name).ToLower()/@item.Id" class="product-card__addtocart-icon" type="button" aria-label="Контакты : 800 060-0730">
                                                         <svg width="20" height="20">
