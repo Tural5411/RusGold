@@ -4,9 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using NToastNotify;
 using RusGold.Entities.Concrete;
-using RusGold.Mvc.Areas.Admin.Models;
 using RusGold.Shared.Utilities.Helpers.Abstract;
-using System.Threading.Tasks;
 
 namespace RusGold.Mvc.Areas.Admin.Controllers
 {
@@ -16,7 +14,9 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
     {
         private readonly ChooseUsPageInfo _chooseUsPageInfo;
         private readonly IWritableOptions<ChooseUsPageInfo> _chooseUsPageInfoWriter;
+        private readonly IWritableOptions<ExchangePageInfo> _exchangePageInfoWriter;
         private readonly AboutUsPageInfo _aboutUsPageInfo;
+        private readonly ExchangePageInfo _exchangePageInfo;
         private readonly IWritableOptions<AboutUsPageInfo> _aboutUsPageInfoWriter;
         private readonly IToastNotification _toastNotification;
         private readonly WebsiteInfo _websiteInfo;
@@ -26,8 +26,10 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
         private readonly IMapper _mapper;
         public OptionController(
             IOptionsSnapshot<AboutUsPageInfo> aboutUsPageInfo,
-            IWritableOptions<AboutUsPageInfo> aboutUsPageInfoWriter,
+            IOptionsSnapshot<ExchangePageInfo> exchangePageInfo,
             IOptionsSnapshot<ChooseUsPageInfo> chooseUsPageInfo,
+            IWritableOptions<ExchangePageInfo> exchangePageInfoWriter,
+            IWritableOptions<AboutUsPageInfo> aboutUsPageInfoWriter,
             IWritableOptions<ChooseUsPageInfo> chooseUsPageInfoWriter,
             IToastNotification toastNotification, IOptionsSnapshot<WebsiteInfo> websiteInfo,
             IWritableOptions<WebsiteInfo> websiteInfoWriter, IOptionsSnapshot<SmtpSettings> smtpSettings,
@@ -37,6 +39,8 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
             _chooseUsPageInfoWriter = chooseUsPageInfoWriter;
             _aboutUsPageInfo = aboutUsPageInfo.Value;
             _aboutUsPageInfoWriter = aboutUsPageInfoWriter;
+            _exchangePageInfoWriter = exchangePageInfoWriter;
+            _exchangePageInfo = exchangePageInfo.Value;
             _toastNotification = toastNotification;
             _websiteInfo = websiteInfo.Value;
             _websiteInfoWriter = websiteInfoWriter;
@@ -69,6 +73,30 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
             }
             return View(chooseUsPageInfo);
         }
+
+        public IActionResult Exchange()
+        {
+            return View(_exchangePageInfo);
+        }
+
+        [HttpPost]
+        public IActionResult Exchange(ExchangePageInfo chooseUsPageInfo)
+        {
+            if (ModelState.IsValid)
+            {
+                _exchangePageInfoWriter.Update(x =>
+                {
+                    x.DollarToRuble = chooseUsPageInfo.DollarToRuble;
+                });
+                _toastNotification.AddSuccessToastMessage("Exchange bölməsi uğurla editləndi.", new ToastrOptions
+                {
+                    Title = "Uğurlu Əməliyyat"
+                });
+                return View(chooseUsPageInfo);
+            }
+            return View(chooseUsPageInfo);
+        }
+
         [HttpGet]
         public IActionResult About()
         {

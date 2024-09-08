@@ -10,10 +10,13 @@ using RusGold.Shared.Utilities.Results.ComplexTypes;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
-using System.Text.Json;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Net.Http;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Newtonsoft.Json;
+using RusGold.Data.Abstract.UnitOfWorks;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace RusGold.Mvc.Areas.Admin.Controllers
 {
@@ -32,6 +35,27 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
             _photoService = photoService;
             _categoryService = categoryService;
         }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateProductPricesBasedOnDollar()
+        {
+            var result =await  _carService.UpdateProductPricesBasedOnDollar();
+            if (result.ResultStatus == ResultStatus.Succes)
+            {
+                _toastNotification.AddSuccessToastMessage(result.Message, new ToastrOptions
+                {
+                    Title = "Uğurlu əməliyyat"
+                });
+                return RedirectToAction("Index", "Product", new { area = "Admin" });
+            }
+            else
+            {
+                ModelState.AddModelError("", result.Message);
+                return RedirectToAction("Index", "Product", new { area = "Admin" });
+            }
+        }
+
+       
 
         public async Task<IActionResult> Index()
         {
@@ -160,9 +184,9 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
             return View(teamUpdateViewModel);
         }
         [HttpPost]
-        public async Task<JsonResult> Delete(int teamId)
+        public async Task<JsonResult> Delete(int productId)
         {
-            var result = await (_carService).Delete(teamId, LoggedInUser.UserName);
+            var result = await (_carService).Delete(productId, LoggedInUser.UserName);
             var deletedTeam = JsonSerializer.Serialize(result);
             return Json(deletedTeam);
         }

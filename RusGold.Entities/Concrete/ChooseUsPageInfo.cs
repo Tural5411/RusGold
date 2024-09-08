@@ -36,4 +36,5 @@ namespace RusGold.Entities.Concrete
         [MinLength(5, ErrorMessage = "{0} {1} karakterdən kiçik olmamalıdır. ")]
         public string ContentFourth { get; set; }
     }
+
 }

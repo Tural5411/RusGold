@@ -11,18 +11,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 
 namespace RusGold.Services.Concrete
 {
 	public class ProductManager : IProductService
 	{
 		public readonly IUnitOfWork _unitOfWork;
+        private readonly IConfiguration _configuration;
 		private readonly IMapper _mapper;
-		public ProductManager(IUnitOfWork unitOfWork, IMapper mapper)
+		public ProductManager(IUnitOfWork unitOfWork, IMapper mapper, IConfiguration configuration)
 		{
 			_unitOfWork = unitOfWork;
+            _configuration = configuration;
 			_mapper = mapper;
 		}
 		public async Task<IDataResult<ProductDto>> Add(ProductAddDto CarAddDto, string createdByName)
@@ -156,6 +161,7 @@ namespace RusGold.Services.Concrete
 					ResultStatus = ResultStatus.Error
 				});
 		}
+       
 		public async Task<IDataResult<ProductListDto>> GetAllByNonDeleteAndActive()
 		{
 			var Car = await _unitOfWork.Products.GetAllAsync(c => c.IsActive && !c.IsDeleted, a => a.Category);
@@ -170,7 +176,58 @@ namespace RusGold.Services.Concrete
 			return new DataResult<ProductListDto>(ResultStatus.Error, Messages.Car.NotFound(isPlural: true), null);
 		}
 
-        public async Task<IDataResult<ProductListDto>> SearchAsync(string keyword, int currentPage = 1, int pageSize = 4, bool isAscending = false)
+		public async Task<IDataResult<ProductListDto>> UpdateProductPricesBasedOnDollar()
+        {
+            try
+            {
+                var currentDollarRate = GetCurrentDollarRate();
+                var oldDollarRate = GetPreviousDollarRate();
+
+                var products = await _unitOfWork.Products.GetAllAsync(c => !c.IsDeleted, c=>c.IsActive, a => a.Category);
+
+                if (products.Count > 0)
+                {
+                    foreach (var product in products)
+                    {
+                        //product.Price = product.Price * currentDollarRate;
+                        product.Price = product.Price * (oldDollarRate / currentDollarRate);
+
+						_ = _unitOfWork.Products.UpdateAsync(product);
+					}
+
+                    
+                    await _unitOfWork.SaveAsync();
+
+                    return new DataResult<ProductListDto>(ResultStatus.Succes, new ProductListDto
+                    {
+                        Products = products,
+                        ResultStatus = ResultStatus.Succes
+                    });
+                }
+
+                return new DataResult<ProductListDto>(ResultStatus.Error, Messages.Car.NotFound(isPlural: true), null);
+            }
+            catch (Exception ex)
+            {
+                return new DataResult<ProductListDto>(ResultStatus.Error, ex.Message, null);
+            }
+        }
+
+
+		public decimal GetCurrentDollarRate()
+        {
+            var currentDollarRate = _configuration.GetValue<decimal>("ExchangePageInfo:DollarToRuble");
+            return currentDollarRate;
+        }
+
+        public decimal GetPreviousDollarRate()
+        {
+            var oldDollarRate = _configuration.GetValue<decimal>("ExchangePageInfo:OldDollarToRuble");
+            return oldDollarRate;
+        }
+
+
+		public async Task<IDataResult<ProductListDto>> SearchAsync(string keyword, int currentPage = 1, int pageSize = 4, bool isAscending = false)
         {
             pageSize = pageSize > 20 ? 20 : pageSize;
             if (string.IsNullOrWhiteSpace(keyword))

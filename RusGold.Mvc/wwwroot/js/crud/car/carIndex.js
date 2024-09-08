@@ -78,8 +78,8 @@
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
-                    data: { articleId: id },
-                    url: '/Admin/Car/Delete/',
+                    data: { productId: id },
+                    url: '/Admin/Product/Delete/',
                     success: function (data) {
                         const articleResult = jQuery.parseJSON(data);
                         if (articleResult.ResultStatus === 0) {

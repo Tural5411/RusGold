@@ -1,5 +1,10 @@
 ﻿@using RusGold.Mvc.Extensions
 @model RusGold.Entities.DTOs.ProductListDto
+<style>
+    .product-card__prices {
+        font-size: 14px !important;
+    }
+</style>
 <div class="block-header block-header--has-breadcrumb block-header--has-title">
     <div class="container">
         <div class="block-header__body">
@@ -93,8 +98,8 @@
                                     <div class="tag-badge tag-badge--hot">hot</div>
                                     </div> *@
                                                             <a style="color: #007bff;
-    font-weight: 500;
-    font-size: large;" href="/Produkt/@Url.FriendlyUrlHelper(item.Name).ToLower()/@item.Id">@item.Name</a>
+                                                                      font-weight: 500;
+                                                                      font-size: large;" href="/Produkt/@Url.FriendlyUrlHelper(item.Name).ToLower()/@item.Id">@item.Name</a>
                                                         </div>
                                                     </div>
                                                     <div class="product-card__features">

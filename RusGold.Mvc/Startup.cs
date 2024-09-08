@@ -52,11 +52,13 @@ namespace RusGold.Mvc
             //     cfg.AddProfile(new ViewModelsProfile(provider.GetService<IImageHelper>()));
             // }).CreateMapper());
             services.Configure<AboutUsPageInfo>(Configuration.GetSection("AboutUsPageInfo"));
+            services.Configure<ExchangePageInfo>(Configuration.GetSection("ExchangePageInfo"));
             services.Configure<WebsiteInfo>(Configuration.GetSection("WebsiteInfo"));
             services.Configure<SmtpSettings>(Configuration.GetSection("SmtpSettings"));
             services.Configure<ChooseUsPageInfo>(Configuration.GetSection("ChooseUsPageInfo"));
             services.ConfigureWritable<WebsiteInfo>(Configuration.GetSection("WebsiteInfo"));
             services.ConfigureWritable<AboutUsPageInfo>(Configuration.GetSection("AboutUsPageInfo"));
+            services.ConfigureWritable<ExchangePageInfo>(Configuration.GetSection("ExchangePageInfo"));
             services.ConfigureWritable<SmtpSettings>(Configuration.GetSection("SmtpSettings"));
             services.ConfigureWritable<ChooseUsPageInfo>(Configuration.GetSection("ChooseUsPageInfo"));
             services.AddControllersWithViews(options =>

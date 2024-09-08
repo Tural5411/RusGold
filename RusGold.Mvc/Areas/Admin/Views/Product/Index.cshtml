@@ -20,56 +20,60 @@
     <li class="active">Məhsullar</li>
 </ol>
 
+
 <div id="modalPlaceHolder" aria-hidden="true"></div>
 <div class="row">
     <div class="col-md-12 card">
+        <form method="post" asp-action="UpdateProductPricesBasedOnDollar" asp-controller="Product">
+            <input type="submit" class="btn btn-success" value="Qiymətləri yeni məzənnəyə görə yenilə"/>
+        </form>
         @if (Model.ResultStatus == ResultStatus.Succes)
         {
             <table class="table no-footer dataTable dtr-inline" id="articleTables">
                 <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Məhsul</th>
-                        <th>Yeni Qiymət</th>
-                        <th>KOhne Qiymət</th>
-                        <th>Kataloq</th>
-                        <th>Şəkil</th>
-                        <th>Aktivdirmi ?</th>
-                        <th>Silinibmi ?</th>
-                        <th>Əməliyyatlar</th>
-                    </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Məhsul</th>
+                    <th>Yeni Qiymət</th>
+                    <th>KOhne Qiymət</th>
+                    <th>Kataloq</th>
+                    <th>Şəkil</th>
+                    <th>Aktivdirmi ?</th>
+                    <th>Silinibmi ?</th>
+                    <th>Əməliyyatlar</th>
+                </tr>
                 </thead>
                 <tfoot>
-                    <tr>
-                        <th>ID</th>
-                        <th>Məhsul</th>
-                        <th>Yeni Qiymət</th>
-                        <th>KOhne Qiymət</th>
-                        <th>Kataloq</th>
-                        <th>Şəkil</th>
-                        <th>Aktivdirmi ?</th>
-                        <th>Silinibmi ?</th>
-                        <th>Əməliyyatlar</th>
-                    </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Məhsul</th>
+                    <th>Yeni Qiymət</th>
+                    <th>KOhne Qiymət</th>
+                    <th>Kataloq</th>
+                    <th>Şəkil</th>
+                    <th>Aktivdirmi ?</th>
+                    <th>Silinibmi ?</th>
+                    <th>Əməliyyatlar</th>
+                </tr>
                 </tfoot>
                 <tbody>
-                    @foreach (var article in Model.Products)
-                    {
-                        <tr class="odd" name="@article.Id">
-                            <td>@article.Id</td>
-                            <td>@article.Name</td>
-                            <td>@article.Price</td>
-                            <td>@article.PriceByCard</td>
-                            <td>@article.Category.Name</td>
-                            <td><img src="~/img/@article.ThumbNail" class="my-image-table" alt="@article.Name" /></td>
-                            <td>@(article.IsActive ? "Bəli" : "Xeyr")</td>
-                            <td>@(article.IsDeleted ? "Bəli" : "Xeyr")</td>
-                            <td class="text-center">
-                                <a class="btn btn-primary btn-sm" data-id="@article.Id" asp-area="Admin" asp-controller="Product" asp-action="Update" asp-route-productId="@article.Id"><span class="fas fa-edit"></span> </a>
-                                <button class="btn btn-danger btn-sm btn-delete" data-id="@article.Id"><span class="fas fa-minus-circle"></span> </button>
-                            </td>
-                        </tr>
-                    }
+                @foreach (var article in Model.Products.OrderByDescending(x=>x.Id))
+                {
+                    <tr class="odd" name="@article.Id">
+                        <td>@article.Id</td>
+                        <td>@article.Name</td>
+                        <td>@article.Price</td>
+                        <td>@article.PriceByCard</td>
+                        <td>@article.Category.Name</td>
+                        <td><img src="~/img/@article.ThumbNail" class="my-image-table" alt="@article.Name"/></td>
+                        <td>@(article.IsActive ? "Bəli" : "Xeyr")</td>
+                        <td>@(article.IsDeleted ? "Bəli" : "Xeyr")</td>
+                        <td class="text-center">
+                            <a class="btn btn-primary btn-sm" data-id="@article.Id" asp-area="Admin" asp-controller="Product" asp-action="Update" asp-route-productId="@article.Id"><span class="fas fa-edit"></span> </a>
+                            <button class="btn btn-danger btn-sm btn-delete" data-id="@article.Id"><span class="fas fa-minus-circle"></span> </button>
+                        </td>
+                    </tr>
+                }
                 </tbody>
             </table>
         }
@@ -80,7 +84,7 @@
                 <p>Dashboarda qayıtmaq üçün <a asp-area="Admin" asp-controller="Home" asp-action="Index">Tıklayın</a></p>
             </div>
         }
-        <button class="btn btn-primary btnUpdate" type="button" disabled style="display:none;">
+        <button class="btn btn-primary btnUpdate" type="button" disabled style="display: none;">
             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             Yüklənir...
         </button>
