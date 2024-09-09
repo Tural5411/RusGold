@@ -121,12 +121,28 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-card__footer">
-                                                    <div class="product-card__prices">
-                                                        <div class="product-card__price product-card__price--current">Цена за новые ₽@item.Price</div>
-                                                    </div>
-                                                    <div class="product-card__prices">
-                                                        <div class="product-card__price product-card__price--current">Цена за б/у ₽@item.PriceByCard</div>
-                                                    </div>
+                                                    @if (item.PriceByCard !=0.00M)
+                                                    {
+                                                        <div class="product-card__prices">
+                                                            <div class="product-card__price product-card__price--current">
+                                                                Цена за новые ₽@item.Price
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-card__prices">
+                                                            <div class="product-card__price product-card__price--current">
+                                                                Цена за б/у ₽@item.PriceByCard
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="product-card__prices">
+                                                            <div class="product-card__price product-card__price--current">
+                                                                Цена ₽@item.Price
+                                                            </div>
+                                                        </div>
+                                                    }
+
                                                     <a href="/Produkt/@Url.FriendlyUrlHelper(item.Name).ToLower()/@item.Id" class="product-card__addtocart-icon" type="button" aria-label="Контакты : +7 909 168 88 49/+7 950 118-73-74">
                                                         <svg width="20" height="20">
                                                             <circle cx="7" cy="17" r="2" />

@@ -20,8 +20,7 @@ namespace RusGold.Mvc.Areas.Admin.Models
         [Display(Name = "Kartla Qiymət")]
         public float? PriceByCard { get; set; }
 
-        [Display(Name = "Məzmun")]
-        public string Content { get; set; }
+        [Display(Name = "Məzmun")] public string Content { get; set; } = "Content";
 
         [Display(Name = "Qızıl Məhsul")]
         public bool? IsGold { get; set; }

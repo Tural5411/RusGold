@@ -24,6 +24,7 @@
 <div id="modalPlaceHolder" aria-hidden="true"></div>
 <div class="row">
     <div class="col-md-12 card">
+        <p>Qiymətləri yeniləmədən qabaq yeni məzənnə ilə köhnə məzzənəni kontrol edin</p>
         <form method="post" asp-action="UpdateProductPricesBasedOnDollar" asp-controller="Product">
             <input type="submit" class="btn btn-success" value="Qiymətləri yeni məzənnəyə görə yenilə"/>
         </form>
@@ -57,7 +58,7 @@
                 </tr>
                 </tfoot>
                 <tbody>
-                @foreach (var article in Model.Products.OrderByDescending(x=>x.Id))
+                @foreach (var article in Model.Products.OrderByDescending(x => x.Id))
                 {
                     <tr class="odd" name="@article.Id">
                         <td>@article.Id</td>

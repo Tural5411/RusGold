@@ -282,6 +282,7 @@ namespace RusGold.Services.Concrete
 				return new DataResult<ProductListDto>(ResultStatus.Succes, new ProductListDto
 				{
 					Products = paginatedProducts,
+					CategoryId = categoryId,
 					CurrentPage = currentPage,
 					PageSize = pageSize,
 					TotalCount = Products.Count,
