@@ -25,7 +25,7 @@ namespace RusGold.Mvc.Controllers
         }
         [Route("Produkt")]
         [HttpGet]
-        public async Task<IActionResult> Index(int? categoryId,int currentPage = 1, int pageSize = 9, bool isAscending = true)
+        public async Task<IActionResult> Index(int? categoryId,int currentPage = 1, int pageSize = 18, bool isAscending = true)
         {
             var articleResult = await _productService.GetAllByPaging(categoryId, currentPage, pageSize, isAscending);
 
@@ -40,7 +40,7 @@ namespace RusGold.Mvc.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Search(string keyword, int currentPage = 1, int pageSize = 4, bool isAscending = false)
+        public async Task<IActionResult> Search(string keyword, int currentPage = 1, int pageSize = 18, bool isAscending = false)
         {
             var searchResult = await _productService.SearchAsync(keyword, currentPage, pageSize, isAscending);
             if (searchResult.ResultStatus == ResultStatus.Succes)
