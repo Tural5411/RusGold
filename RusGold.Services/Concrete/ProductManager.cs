@@ -189,7 +189,6 @@ namespace RusGold.Services.Concrete
                 {
                     foreach (var product in products)
                     {
-                        //product.Price = product.Price * currentDollarRate;
                         product.Price = product.Price * (oldDollarRate / currentDollarRate);
 
 						_ = _unitOfWork.Products.UpdateAsync(product);

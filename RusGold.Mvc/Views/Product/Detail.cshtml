@@ -30,42 +30,43 @@
         margin: 0 10px;
     }
 
-    .social-links__item a {
-        display: inline-block;
-        color: white;
-        font-size: 24px;
-        width: 50px;
-        height: 50px;
-        line-height: 50px;
-        text-align: center;
-        border-radius: 50%;
-        background-color: #333;
-        transition: background-color 0.3s ease;
-    }
+        .social-links__item a {
+            display: inline-block;
+            color: white;
+            font-size: 24px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: #333;
+            transition: background-color 0.3s ease;
+        }
 
-    .social-links__item a:hover {
-        background-color: #555;
-    }
+            .social-links__item a:hover {
+                background-color: #555;
+            }
 
     .footer-contact {
         margin-top: 15px;
     }
 
-    .footer-contact p {
-        font-size: 16px;
-        color: #333;
-        margin: 5px 0;
-    }
+        .footer-contact p {
+            font-size: 16px;
+            color: #333;
+            margin: 5px 0;
+        }
 
     /* Responsiv Dizayn üçün */
     @@media (max-width: 768px) {
-    .social-links__list {
-        flex-direction: column;
-    }
+        .social-links__list {
+            flex-direction: column;
+        }
 
-    .social-links__item {
-        margin-bottom: 15px;
-    }}
+        .social-links__item {
+            margin-bottom: 15px;
+        }
+    }
 
 </style>
 <!-- site__body -->
@@ -147,6 +148,31 @@
                                             {
                                                 @:кг
                                             }
+                                            else if (Model.Product.UnitId == 3)
+                                            {
+                                                @:контакт
+                                            }
+                                            else if (Model.Product.UnitId == 4)
+                                            {
+                                                @:Договорная
+                                            }
+                                            else if (Model.Product.UnitId == 5)
+                                            {
+                                                @:кольцо
+                                            }
+                                            else if (Model.Product.UnitId == 6)
+                                            {
+                                                @:секция
+                                            }
+                                            else if (Model.Product.UnitId == 7)
+                                            {
+                                                @:одна ножка
+                                            }
+                                            else if (Model.Product.UnitId == 8)
+                                            {
+                                                @:г
+                                            }
+
                                             <span></span>
                                         </li>
                                     </ul>
@@ -188,16 +214,16 @@
                                         <div class="footer-newsletter__social-links">
                                             <ul class="social-links__list">
                                                 <li class="social-links__item social-links__item--facebook">
-                                                    <a style="background: #7360f2 !important;" href="#" ><i class="fab fa-viber"></i></a>
+                                                    <a style="background: #7360f2 !important;" href="#"><i class="fab fa-viber"></i></a>
                                                 </li>
                                                 <li class="social-links__item social-links__item--whatsapp">
-                                                    <a style="background: #04ba44 !important;" href="#" ><i class="fab fa-whatsapp"></i></a>
+                                                    <a style="background: #04ba44 !important;" href="#"><i class="fab fa-whatsapp"></i></a>
                                                 </li>
                                                 <li class="social-links__item social-links__item--facebook">
                                                     <a style="background: #0088cc !important;" href="#"><i class="fab fa-telegram"></i></a>
                                                 </li>
                                             </ul>
-    
+
                                             <div class="footer-contact">
                                                 <p class="mt-1">+7 909 168-88-49</p>
                                                 <p>+7 950 118-73-74</p>
@@ -208,18 +234,18 @@
                                 </div>
                             </div>
                             @*<div class="product__tabs product-tabs product-tabs--layout--full">
-                                <ul class="product-tabs__list">
-                                    <li class="product-tabs__item product-tabs__item--active"><a href="#product-tab-description">Описание</a></li>
-                                </ul>
-                                <div class="product-tabs__content">
-                                    <div class="product-tabs__pane product-tabs__pane--active" id="product-tab-description">
-                                        <div class="typography">
-                                            <p>
-                                                @Html.Raw(Model.Product.Content)
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+                            <ul class="product-tabs__list">
+                            <li class="product-tabs__item product-tabs__item--active"><a href="#product-tab-description">Описание</a></li>
+                            </ul>
+                            <div class="product-tabs__content">
+                            <div class="product-tabs__pane product-tabs__pane--active" id="product-tab-description">
+                            <div class="typography">
+                            <p>
+                            @Html.Raw(Model.Product.Content)
+                            </p>
+                            </div>
+                            </div>
+                            </div>
                             </div>*@
                         </div>
                     </div>
