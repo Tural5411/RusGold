@@ -183,15 +183,16 @@ namespace RusGold.Services.Concrete
                 var currentDollarRate = GetCurrentDollarRate();
                 var oldDollarRate = GetPreviousDollarRate();
 
-                var products = await _unitOfWork.Products.GetAllAsync(c => !c.IsDeleted, c=>c.IsActive, a => a.Category);
+                var products = await _unitOfWork.Products.GetAllAsync(c => c.IsDeleted/*, c=>c.IsActive*/, a => a.Category);
 
                 if (products.Count > 0)
                 {
                     foreach (var product in products)
                     {
                         product.Price = product.Price * (oldDollarRate / currentDollarRate);
+                        product.PriceByCard = product.PriceByCard * (oldDollarRate / currentDollarRate);
 
-						_ = _unitOfWork.Products.UpdateAsync(product);
+                        _ = _unitOfWork.Products.UpdateAsync(product);
 					}
 
                     
