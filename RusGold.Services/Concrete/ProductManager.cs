@@ -183,7 +183,7 @@ namespace RusGold.Services.Concrete
                 var currentDollarRate = GetCurrentDollarRate();
                 var oldDollarRate = GetPreviousDollarRate();
 
-                var products = await _unitOfWork.Products.GetAllAsync(c => c.IsDeleted/*, c=>c.IsActive*/);
+                var products = await _unitOfWork.Products.GetAllAsync(c => !c.IsDeleted, c=>c.IsActive);
 
 				if (products.Count > 0)
                 {
