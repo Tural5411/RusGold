@@ -4,6 +4,16 @@
     .product-card__prices {
         font-size: 14px !important;
     }
+    .product-card__prices {
+        margin-bottom: 10px; /* Fiyatlar arasında boşluk bırakır */
+    }
+
+    .product-card__price--current {
+        border: 1px solid #ddd; /* Çerçeve ekler */
+        padding: 10px; /* İçerik kenarlarından boşluk bırakır */
+        border-radius: 5px; /* Çerçeve kenarlarını yuvarlar */
+        background-color: #f9f9f9; /* Hafif gri bir arka plan ekler */
+    }
 </style>
 <div class="block-header block-header--has-breadcrumb block-header--has-title">
     <div class="container">
@@ -146,16 +156,16 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-card__footer">
-                                                    @if (item.PriceByCard !=0.00M)
+                                                    @if (item.PriceByCard != 0.00M)
                                                     {
                                                         <div class="product-card__prices">
                                                             <div class="product-card__price product-card__price--current">
-                                                                Цена за новые ₽@item.Price
+                                                                Цена за новые ₽ @string.Format(new System.Globalization.CultureInfo("ru-RU"), "{0:N2}", item.Price).Replace('.', ',').Replace(',', ' ').Replace(' ', '.')
                                                             </div>
                                                         </div>
                                                         <div class="product-card__prices">
                                                             <div class="product-card__price product-card__price--current">
-                                                                Цена за б/у ₽@item.PriceByCard
+                                                                Цена за б/у ₽ @string.Format(new System.Globalization.CultureInfo("ru-RU"), "{0:N2}", item.PriceByCard).Replace('.', ',').Replace(',', ' ').Replace(' ', '.')
                                                             </div>
                                                         </div>
                                                     }
@@ -163,7 +173,7 @@
                                                     {
                                                         <div class="product-card__prices">
                                                             <div class="product-card__price product-card__price--current">
-                                                                Цена ₽@item.Price
+                                                                Цена ₽ @string.Format(new System.Globalization.CultureInfo("ru-RU"), "{0:N2}", item.Price).Replace('.', ',').Replace(',', ' ').Replace(' ', '.')
                                                             </div>
                                                         </div>
                                                     }

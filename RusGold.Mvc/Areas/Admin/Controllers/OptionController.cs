@@ -87,6 +87,7 @@ namespace RusGold.Mvc.Areas.Admin.Controllers
                 _exchangePageInfoWriter.Update(x =>
                 {
                     x.DollarToRuble = chooseUsPageInfo.DollarToRuble;
+                    x.OldDollarToRuble = chooseUsPageInfo.OldDollarToRuble;
                 });
                 _toastNotification.AddSuccessToastMessage("Exchange bölməsi uğurla editləndi.", new ToastrOptions
                 {

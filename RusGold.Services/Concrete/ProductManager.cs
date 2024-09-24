@@ -183,20 +183,19 @@ namespace RusGold.Services.Concrete
                 var currentDollarRate = GetCurrentDollarRate();
                 var oldDollarRate = GetPreviousDollarRate();
 
-                var products = await _unitOfWork.Products.GetAllAsync(c => c.IsDeleted/*, c=>c.IsActive*/, a => a.Category);
+                var products = await _unitOfWork.Products.GetAllAsync(c => c.IsDeleted/*, c=>c.IsActive*/);
 
-                if (products.Count > 0)
+				if (products.Count > 0)
                 {
-                    foreach (var product in products)
+					foreach (var product in products)
                     {
-                        product.Price = product.Price * (oldDollarRate / currentDollarRate);
-                        product.PriceByCard = product.PriceByCard * (oldDollarRate / currentDollarRate);
+                        product.Price = Math.Round(product.Price / oldDollarRate * currentDollarRate, 2);
+                        product.PriceByCard = Math.Round(product.PriceByCard / oldDollarRate * currentDollarRate, 2);
 
-                        _ = _unitOfWork.Products.UpdateAsync(product);
-					}
+                        await _unitOfWork.Products.UpdateAsync(product);
+                    }
 
-                    
-                    await _unitOfWork.SaveAsync();
+					await _unitOfWork.SaveAsync();
 
                     return new DataResult<ProductListDto>(ResultStatus.Succes, new ProductListDto
                     {
@@ -205,7 +204,7 @@ namespace RusGold.Services.Concrete
                     });
                 }
 
-                return new DataResult<ProductListDto>(ResultStatus.Error, Messages.Car.NotFound(isPlural: true), null);
+				return new DataResult<ProductListDto>(ResultStatus.Error, Messages.Car.NotFound(isPlural: true), null);
             }
             catch (Exception ex)
             {
