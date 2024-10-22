@@ -57,6 +57,25 @@
                 top: -10px;
             }
         }
+
+        .float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+        }
+
+        .my-float {
+            margin-top: 16px;
+        }
     </style>
     <link rel="stylesheet" href="~/rusGold/vendor/fontawesome/css/all.min.css" />
 </head>
@@ -153,7 +172,10 @@
         <!-- site__header -->
         @await Component.InvokeAsync("Header")
         <!-- site__header / end -->
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <a href="https://api.whatsapp.com/send?phone=+79140001065&text=privet" class="float" target="_blank">
+            <i class="fa fa-whatsapp my-float"></i>
+        </a>
 
         @RenderBody()
         <footer class="site__footer">
@@ -178,7 +200,7 @@
                                         <dl>
                                             <dt>Номер телефона</dt>
                                             <dd>
-                                                +8 964 000 10 65
+                                                +7 914 000 10 65
                                             </dd>
                                         </dl>
                                         <dl>
